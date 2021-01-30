@@ -10,7 +10,114 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_185902) do
+ActiveRecord::Schema.define(version: 2021_01_30_200824) do
+
+  create_table "breakfast_ingredients", force: :cascade do |t|
+    t.integer "ingredient_id"
+    t.integer "breakfast_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "breakfast_recipes", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "breakfast_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "breakfasts", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dinner_ingredients", force: :cascade do |t|
+    t.integer "ingredient_id"
+    t.integer "dinner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dinner_recipes", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "dinner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dinners", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lunch_ingredients", force: :cascade do |t|
+    t.integer "ingredient_id"
+    t.integer "lunch_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lunch_recipes", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "lunch_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lunches", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nutrion_ingredients", force: :cascade do |t|
+    t.integer "ingredient_id"
+    t.integer "nutrion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nutrions", force: :cascade do |t|
+    t.integer "carbohydrate"
+    t.integer "protein"
+    t.integer "fat"
+    t.integer "vitaminA"
+    t.integer "vitaminB"
+    t.integer "vitaminB2"
+    t.integer "vitaminB3"
+    t.integer "vitaminB5"
+    t.integer "vitaminB6"
+    t.integer "vitaminB12"
+    t.integer "vitaminC"
+    t.integer "vitaminD"
+    t.integer "vitaminE"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.integer "ingredient_id"
+    t.integer "recipe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.text "method"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,6 +125,8 @@ ActiveRecord::Schema.define(version: 2021_01_29_185902) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "introduction"
+    t.string "image_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
