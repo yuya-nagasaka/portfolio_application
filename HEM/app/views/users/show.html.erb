@@ -20,6 +20,7 @@
       <tr>
         <td><%= recipe.name %></td>
         <td><%= link_to "編集する",edit_recipe_path(recipe.id),class: "btn btn-success" %></td>
+        <td><%= link_to "削除する",recipe_path(recipe.id),method: :delete %>
       </tr>
     <% end %>
   </tbody>

@@ -52,7 +52,10 @@ class RecipesController < ApplicationController
   end
   
   
-  def delete
+  def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.delete
+    redirect_back(fallback_location: root_path)
   end
   
   private
