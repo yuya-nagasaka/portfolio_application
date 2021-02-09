@@ -1,0 +1,32 @@
+<% @ingredient.each do |ingredient| %>
+  <%= ingredient.name %>
+  <%= button_to "追加",{controller: 'draft_ingredients', action: 'create' }, {method: :post,params: {ingredient_id: ingredient.id}}%></br>
+<% end %>
+<%= form_with model:@recipe,local:true do |f| %>
+  <h2>レシピ名</h2>
+  <%= f.text_field :name %>
+  <h2>調理手順</h2>
+  <%= f.text_area :method %></br>
+  <%= f.submit "投稿" %>
+<% end %>
+<h2>使用食材</h2>
+<table>
+  <thead>
+    <tr>
+      <td>食材</td>
+      <td>分量</td>
+      <td>削除</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @draft_ingredients.each do |draft_ingredient| %>
+      <tr>
+        <td><%= draft_ingredient.ingredient.name %></td>
+        <%= form_with model:draft_ingredient,local:true do|f|%>
+          <td><%=f.text_field :quantity %>g<%= f.submit "数量更新" %></td>
+        <% end %>
+        <td><%= link_to "削除",draft_ingredient_path(draft_ingredient.id),method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

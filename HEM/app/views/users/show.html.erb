@@ -1,12 +1,12 @@
 <h2><span class="border">プロフィール<span></h2>
-<span><%= @user.name %></span>
-<span><%= @user.introduction %></span>
+<span><%= current_user.name %></span>
+<span><%= current_user.introduction %></span>
 <span>紹介文</span>
 <%= link_to "編集する",edit_user_path,class: 'btn btn-success' %>
 <h2><span class="border">食事記録<span></h2>
-<h4><span class="border rounded">朝食</span>　<%= link_to "編集する",edit_user_path,class: 'btn btn-success' %></h4>
-<h4><span class="border rounded">昼食</span>　<%= link_to "編集する",edit_user_path,class: 'btn btn-success' %></h4>
-<h4><span class="border rounded">夕食</span>　<%= link_to "編集する",edit_user_path,class: 'btn btn-success' %></h4>
+<h4><span class="border rounded">朝食</span>　<%= link_to "記録する",new_breakfast_path,class: 'btn btn-success' %></h4>
+<h4><span class="border rounded">昼食</span>　<%= link_to "記録する",new_lunch_path,class: 'btn btn-success' %></h4>
+<h4><span class="border rounded">夕食</span>　<%= link_to "記録する",new_dinner_path,class: 'btn btn-success' %></h4>
 <h2><span class="border">投稿レシピ一覧<span></h2>
 <table>
   <thead>
@@ -16,10 +16,10 @@
      </tr>
   </thead>
   <tbody>
-    <% @recipes.each do |resipe| %>
+    <% @recipes.each do |recipe| %>
       <tr>
         <td><%= recipe.name %></td>
-        <td><%= link_to "編集する",edit_user_path,class: "btn btn-success" %></td>
+        <td><%= link_to "編集する",edit_recipe_path(recipe.id),class: "btn btn-success" %></td>
       </tr>
     <% end %>
   </tbody>

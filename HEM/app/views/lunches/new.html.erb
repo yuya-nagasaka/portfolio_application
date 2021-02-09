@@ -1,0 +1,26 @@
+<h2>メニュー検索</h2>
+<%= form_tag(new_lunch_path,:method=>"get")do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Serch" %>
+<% end %>
+<% @recipes.each do |recipe| %>
+  <%= recipe.name %>
+  <%= button_to "追加",{controller: 'lunch_recipes', action: 'create' }, {method: :post,params: {recipe_id: recipe.id}}%></br>
+<% end %>
+<h2>使用レシピ</h2>
+<table>
+  <thead>
+    <tr>
+      <td>レシピ名</td>
+      <td>削除</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lunch_recipes.each do |lunch_recipe| %>
+      <tr>
+        <td><%= lunch_recipe.recipe.name %></td>
+        <td><%= link_to "削除",lunch_recipe_path(lunch_recipe.id),method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

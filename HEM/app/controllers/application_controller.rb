@@ -7,4 +7,14 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
+  
+  def current_draft
+    if session[:draft_id]#セッションにdraft_idがあれば
+      @draft = Draft.find(session[:draft_id])#@draftに代入
+    else
+      @draft = Draft.create#無ければ、別途作成
+      session[:draft_id] = @draft.id#idをセッションに代入
+    end
+  end
+  
 end

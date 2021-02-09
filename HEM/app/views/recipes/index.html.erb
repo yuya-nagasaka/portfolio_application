@@ -1,0 +1,23 @@
+<h2><span class="border">投稿レシピ一覧<span></h2>
+<table>
+  <thead>
+    <tr>
+      <td>プロフィール画像</td>
+      <td>名前</td>
+      <td>レシピ名</td>
+      <td>編集ボタン</td>
+     </tr>
+  </thead>
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= attachment_image_tag recipe.user, :image,format:"jpeg",size: "100x100" %></td>
+        <td><%= recipe.user.name %></td>
+        <td><%= recipe.name %></td>
+        <td><%= link_to "編集する",edit_recipe_path(recipe.id),class: "btn btn-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 
+  
+  

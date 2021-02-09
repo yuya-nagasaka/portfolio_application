@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :recipes
+  has_many :draft_ingredients
+  has_one :breakfast
+  has_one :lunch
+  has_one :dinner
+  attachment :image
 end

@@ -16,10 +16,8 @@ class CreateIngredients < ActiveRecord::Migration[5.2]
       t.float  :vitaminC
       t.float  :vitaminD
       t.float  :vitaminE
-      t.float :created_at
-      t.float :updated_at
-      t.float :created_at
-      t.float :updated_at
+      t.datetime :created_at
+      t.datetime :updated_at
     end
   end
 end
