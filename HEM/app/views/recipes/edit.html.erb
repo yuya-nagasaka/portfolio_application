@@ -1,46 +1,53 @@
-<h2>食材検索</h2>
-<%= form_tag(new_recipe_path,:method=>"get")do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag "Serch" %>
-<% end %>
-<% @ingredient.each do |ingredient| %>
-  <%= ingredient.name %>
-  <%= button_to "追加",{controller: 'draft_ingredients', action: 'create' }, {method: :post,params: {ingredient_id: ingredient.id}}%></br>
-<% end %>
-<%= form_with model:@recipe,local:true do |f| %>
-  <h2>レシピ名</h2>
-  <%= f.text_field :name %>
-  <h2>調理手順</h2>
-  <%= f.text_area :method %></br>
-  <%= f.submit "投稿" %>
-<% end %>
-<h2>使用食材</h2>
-<table>
-  <thead>
-    <tr>
-      <td>食材</td>
-      <td>分量</td>
-      <td>削除</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @recipe_ingredients.each do |recipe_ingredient| %>
-      <tr>
-        <td><%= recipe_ingredient.ingredient.name %></td>
-        <%= form_with model:recipe_ingredient,local:true do|f|%>
-          <td><%=f.text_field :quantity %>g<%= f.submit "数量更新" %></td>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h4 class="mt-5 mb-5">食材検索</h4>
+      <%= form_tag(new_recipe_path,:method=>"get")do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag "Serch" %>
+      <% end %>
+      <% @ingredient.each do |ingredient| %>
+        <%= ingredient.name %>
+        <%= button_to "追加",{controller: 'draft_ingredients', action: 'create' }, {method: :post,params: {ingredient_id: ingredient.id}}%></br>
+      <% end %>
+      <%= form_with model:@recipe,local:true do |f| %>
+        <h4 class="mb-5 mt-5">レシピ名</h4>
+        <%= f.text_field :name %>
+        <h4 class="mb-5 mt-5">調理手順</h4>
+        <%= f.text_area :method,class:"w-100"  %></br>
+        <%= f.submit "投稿",class:"btn btn-success mt-3 w-100" %>
+      <% end %>
+    </div>
+    <div class="col-md-7">
+      <h4 class="mb-5 mt-5">使用食材</h4>
+      <table>
+        <thead>
+          <tr>
+            <td>食材</td>
+            <td>分量</td>
+            <td>削除</td>
+          </tr>
+        </thead>
+        <tbody>
+        <% @recipe_ingredients.each do |recipe_ingredient| %>
+          <tr class="border-top border-bottom">
+            <td class="pt-2 pb-2"><%= recipe_ingredient.ingredient.name %></td>
+            <%= form_with model:recipe_ingredient,local:true do|f|%>
+            <td class="pt-2 pb-2"><%=f.text_field :quantity %>　g　<%= f.submit "数量更新" %></td>
+            <% end %>
+            <td class="pt-2 pb-2 pl-2"><%= link_to "削除",recipe_ingredient_path(recipe_ingredient.id),method: :delete %></td>
+          </tr>
         <% end %>
-        <td><%= link_to "削除",recipe_ingredient_path(recipe_ingredient.id),method: :delete %></td>
-      </tr>
-    <% end %>
-    <% @draft_ingredients.each do |draft_ingredient| %>
-      <tr>
-        <td><%= draft_ingredient.ingredient.name %></td>
-        <%= form_with model:draft_ingredient,local:true do|f|%>
-          <td><%=f.text_field :quantity %>g<%= f.submit "数量更新" %></td>
+        <% @draft_ingredients.each do |draft_ingredient| %>
+          <tr class="border-top border-bottom">
+            <td class="pt-2 pb-2"><%= draft_ingredient.ingredient.name %></td>
+            <%= form_with model:draft_ingredient,local:true do|f|%>
+            <td class="pt-2 pb-2"><%=f.text_field :quantity %>　g　<%= f.submit "数量更新" %></td>
+            <% end %>
+            <td class="pt-2 pb-2 pl-2"><%= link_to "削除",draft_ingredient_path(draft_ingredient.id),method: :delete %></td>
+          </tr>
         <% end %>
-        <td><%= link_to "削除",draft_ingredient_path(draft_ingredient.id),method: :delete %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>
