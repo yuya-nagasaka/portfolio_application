@@ -1,23 +1,25 @@
-<h2><span class="border">投稿レシピ一覧<span></h2>
-<table>
-  <thead>
-    <tr>
-      <td>プロフィール画像</td>
-      <td>名前</td>
-      <td>レシピ名</td>
-      <td>編集ボタン</td>
-     </tr>
-  </thead>
-  <tbody>
-    <% @recipes.each do |recipe| %>
+<div class="w-100">
+  <h2 class="w-50 border mx-auto text-center mt-5">投稿レシピ一覧</h2>
+  <table class="w-50 mx-auto">
+    <thead>
       <tr>
-        <td><%= attachment_image_tag recipe.user, :image,format:"jpeg",size: "100x100" %></td>
-        <td><%= recipe.user.name %></td>
-        <td><%= recipe.name %></td>
-        <td><%= link_to "編集する",edit_recipe_path(recipe.id),class: "btn btn-success" %></td>
+        <td></td>
+        <td class="p-2">名前</td>
+        <td class="p-2">レシピ名</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr class="border-top border-bottom">
+        <td class="pt-2 pb-2"><%= attachment_image_tag recipe.user, :image, :fill, 60, 60, fallback: "user.png",size:'50x50' %></td>
+        <td class="pr-2 pl-2"><%= recipe.user.name %></td>
+        <td class="pr-2 pl-2"><%= recipe.name %></td>
+        <td class="pr-2 pl-2"><%= link_to "編集",edit_recipe_path(recipe.id),class: "btn btn-success p-1" %></td>
       </tr>
     <% end %>
-  </tbody>
-</table> 
+    </tbody>
+  </table>
+</div>
   
   
