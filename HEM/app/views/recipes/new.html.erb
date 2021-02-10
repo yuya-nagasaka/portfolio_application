@@ -7,7 +7,7 @@
         <%= submit_tag "Serch" %>
       <% end %>
       <% @ingredient.each do |ingredient| %>
-        <%= ingredient.name %>
+        <%= ingredient.name%>
         <%= button_to "追加",{controller: 'draft_ingredients', action: 'create' }, {method: :post,params: {ingredient_id: ingredient.id}}%>
       <% end %>
       <%= form_with model:@recipe,local:true do |f| %>

@@ -13,7 +13,6 @@
         <li class="list-inline-item"><%= link_to "トップ",user_path(current_user.id) %></li>
         <li class="list-inline-item"><%= link_to "レシピ投稿",new_recipe_path %></li>
         <li class="list-inline-item"><%= link_to "レシピ一覧",recipes_path %></li>
-        <li class="list-inline-item"><%= link_to "食事記録一覧" %></li>
         <li class="list-inline-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       </ul>
     <% else %>
