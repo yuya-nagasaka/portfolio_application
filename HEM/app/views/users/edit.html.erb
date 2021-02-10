@@ -1,10 +1,13 @@
-<%= form_with model:@user, url:"/users/#{@user.id}",local:true do |f| %>
-  <h2>名前</h2>
-  <%= f.text_field :name %>
-  <h2>プロフィール画像</h2>
-  <%= attachment_image_tag @user, :image,format:"jpeg",size: "100x100" %></br>
-  <%= f.attachment_field :image %>
-  <h2>紹介文</h2>
-  <%= f.text_area :introduction %></br>
-  <%= f.submit "保存" %>
-<% end %>
+<div class="m-5">
+  <%= form_with model:@user, url:"/users/#{@user.id}",local:true do |f| %>
+    <h2 class="mb-3">名前</h2>
+    <%= f.text_field :name %>
+    <h2 class="mb-3 mt-3">プロフィール画像</h2>
+    <%= attachment_image_tag @user, :image, :fill, 60, 60, fallback: "user.png",size:'75x75' %>
+    <%= attachment_image_tag @user, :image,format:"jpeg",size: "100x100" %></br>
+    <%= f.attachment_field :image %>
+    <h2  class="mb-3 mt-3">紹介文</h2>
+    <%= f.text_area :introduction,class:"w-25"%></br>
+    <%= f.submit "保存",class:"btn btn-success w-25 mt-4" %>
+  <% end %>
+</div>
