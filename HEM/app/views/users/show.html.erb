@@ -1,29 +1,44 @@
-<h2><span class="border">プロフィール<span></h2>
-<span><%= current_user.name %></span>
-<span><%= current_user.introduction %></span>
-<span>紹介文</span>
-<%= link_to "編集する",edit_user_path,class: 'btn btn-success' %>
-<h2><span class="border">食事記録<span></h2>
-<h4><span class="border rounded">朝食</span>　<%= link_to "記録する",new_breakfast_path,class: 'btn btn-success' %></h4>
-<h4><span class="border rounded">昼食</span>　<%= link_to "記録する",new_lunch_path,class: 'btn btn-success' %></h4>
-<h4><span class="border rounded">夕食</span>　<%= link_to "記録する",new_dinner_path,class: 'btn btn-success' %></h4>
-<h2><span class="border">投稿レシピ一覧<span></h2>
-<table>
-  <thead>
-    <tr>
-      <td>レシピ名</td>
-      <td>　</td>
-     </tr>
-  </thead>
-  <tbody>
-    <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.name %></td>
-        <td><%= link_to "編集する",edit_recipe_path(recipe.id),class: "btn btn-success" %></td>
-        <td><%= link_to "削除する",recipe_path(recipe.id),method: :delete %>
-      </tr>
-    <% end %>
-  </tbody>
-</table> 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3 class="mt-5 mb-5"><span class="border pr-4 pl-4 pt-2 pb-2 ">プロフィール<span></h3>
+      <table>
+        <tr>
+          <td><%= attachment_image_tag @user, :image, :fill, 60, 60, fallback: "user.png",size:'50x50' %></td>
+          <td class="border"><span class="pr-5 pl-5"><%= current_user.introduction %></span></br></td>
+        </tr>
+         <tr>
+          <td><span><%= current_user.name %></span></td>
+          <td><span>紹介文</span></br></td>
+        </tr>
+      </table>
+      <%= link_to "編集",edit_user_path,class: 'btn btn-success mt-2 mb-2 w-75' %>
+      <h3 class="mt-5 mb-5 w-100"><span class="border pr-5 pl-5 pt-2 pb-2">食事記録<span></h2>
+      <h4 class="mt-4 mb-4"><span class="border rounded pr-4 pl-4 pt-2 pb-2">朝食</span>　<%= link_to "記録",new_breakfast_path,class: 'btn btn-success pt-2 pb-2 pr-3 pl-3' %></h4>
+      <h4 class="mt-4 mb-4"><span class="border rounded pr-4 pl-4 pt-2 pb-2">昼食</span>　<%= link_to "記録",new_lunch_path,class: 'btn btn-success pt-2 pb-2 pr-3 pl-3' %></h4>
+      <h4 class="mt-4 mb-4"><span class="border rounded pr-4 pl-4 pt-2 pb-2">夕食</span>　<%= link_to "記録",new_dinner_path,class: 'btn btn-success pt-2 pb-2 pr-3 pl-3' %></h4>
+    </div>
+    <div class="col-md-7">
+      <h3 class="mt-5 mb-5"><span class="border  pr-5 pl-5 pt-2 pb-2">投稿レシピ一覧<span></h2>
+      <table>
+        <thead>
+          <tr>
+            <td class="pb-2">レシピ名</td>
+            <td>　</td>
+          </tr>
+        </thead>
+        <tbody>
+        <% @recipes.each do |recipe| %>
+          <tr class="border-bottom border-top">
+            <td class="pt-2 pb-2 w-75"><%= recipe.name %></td>
+            <td class="pt-2 pb-2">　<%= link_to "編集",edit_recipe_path(recipe.id),class: "btn btn-success p-1" %></td>
+            <td class="pt-2 pb-2">　<%= link_to "削除",recipe_path(recipe.id),method: :delete,class: "btn btn-danger p-1" %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </diav>
+</div>
   
   
