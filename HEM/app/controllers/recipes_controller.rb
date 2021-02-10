@@ -69,7 +69,7 @@ class RecipesController < ApplicationController
       where(['name LIKE ?', "%#{search}%"]) 
       # where(['ingredient(カラム) LIKE ?', "%#{search(検索文字)}%"]) 
     else
-      all
+      none
     end
   end
 end
