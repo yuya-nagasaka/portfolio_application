@@ -14,7 +14,7 @@
       <tr class="border-top border-bottom">
         <td class="pt-2 pb-2"><%= attachment_image_tag recipe.user, :image, :fill, 60, 60, fallback: "user.png",size:'50x50' %></td>
         <td class="pr-2 pl-2"><%= recipe.user.name %></td>
-        <td class="pr-2 pl-2"><%= recipe.name %></td>
+        <td class="pr-2 pl-2"><%= link_to "#{recipe.name}",recipe_path(recipe) %></td>
         <td class="pr-2 pl-2"><%= link_to "編集",edit_recipe_path(recipe.id),class: "btn btn-success p-1" %></td>
       </tr>
     <% end %>
