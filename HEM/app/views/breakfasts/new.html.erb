@@ -40,6 +40,15 @@
         <% vitaminD = 0 %>
         <% vitaminE = 0 %>
         <% recipe_vitaminA = 0 %>
+        <% recipe_vitaminB1 = 0 %>
+        <% recipe_vitaminB2 = 0 %>
+        <% recipe_vitaminB3 = 0 %>
+        <% recipe_vitaminB5 = 0 %>
+        <% recipe_vitaminB6 = 0 %>
+        <% recipe_vitaminB12 = 0 %>
+        <% recipe_vitaminC = 0 %>
+        <% recipe_vitaminD = 0 %>
+        <% recipe_vitaminE = 0 %>
          <%# 朝食で摂取可能な各栄養素を取得 %>
           <% unless @user_breakfast.nil? %>
             <% @user_breakfast.recipes.each do |breakfast_recipe| %>
@@ -68,23 +77,221 @@
           </tr>
           <tr>
           <% @need_vitaminA = @need_vitaminA - vitaminA %>
+          <% @need_vitaminB1 = @need_vitaminB1 - vitaminB1 %>
+          <% @need_vitaminB2 = @need_vitaminB2 - vitaminB2 %>
+          <% @need_vitaminB3 = @need_vitaminB3 - vitaminB3 %>
+          <% @need_vitaminB5 = @need_vitaminB5 - vitaminB5 %>
+          <% @need_vitaminB6 = @need_vitaminB6 - vitaminB6 %>
+          <% @need_vitaminB12 = @need_vitaminB12 - vitaminB12 %>
+          <% @need_vitaminC = @need_vitaminC - vitaminC %>
+          <% @need_vitaminD = @need_vitaminD - vitaminD %>
+          <% @need_vitaminE = @need_vitaminE - vitaminE %>
           <% if @need_vitaminA > 0 %>
             <td><%= "ビタミンA" %></td>
-            <td><%= @need_vitaminA.round %><%="μgRAE"%></td>
-          <% end %>
+            <td><%= @need_vitaminA.round %><%="μg"%></td>
             <td>
-              <% @need_vitaminA = @need_vitaminA - vitaminA %>
-              <% if @need_vitaminA > 0 %>
-                <% @all_recipes.each do |recipe| %>
-                  <% recipe.ingredients do |ingredient| %>
-                  <% recipe_vitaminA += ingredient.vitaminA %>
-                    <% if @need_vitaminA < recipe_vitaminA %>
-                      <%= recipe.name %>
-                    <% end %>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminA += ingredient.vitaminA*recipe_ingredient.quantity %>
                   <% end %>
+                <% end %>
+                <% if @need_vitaminA < recipe_vitaminA %>
+                  <%= recipe.name %>
                 <% end %>
               <% end %>
             </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminB1 = @need_vitaminB1 - vitaminB1 %>
+          <% if @need_vitaminB1 > 0 %>
+            <td><%= "ビタミンB1" %></td>
+            <td><%= @need_vitaminB1.round(1) %><%="mg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminB1 += ingredient.vitaminB1*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminB1 < recipe_vitaminB1 %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminB2 = @need_vitaminB2 - vitaminB2 %>
+          <% if @need_vitaminB2 > 0 %>
+            <td><%= "ビタミンB2" %></td>
+            <td><%= @need_vitaminB2.round(1) %><%="mg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminB2 += ingredient.vitaminB2*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminB2 < recipe_vitaminB2 %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminB3 = @need_vitaminB3 - vitaminB3 %>
+          <% if @need_vitaminB3 > 0 %>
+            <td><%= "ビタミンB3" %></td>
+            <td><%= @need_vitaminB3.round(1) %><%="mg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminB3 += ingredient.vitaminB3*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminB3 < recipe_vitaminB3 %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminB5 = @need_vitaminB5 - vitaminB5 %>
+          <% if @need_vitaminB5 > 0 %>
+            <td><%= "ビタミンB5" %></td>
+            <td><%= @need_vitaminB5.round(1) %><%="mg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminB5 += ingredient.vitaminB5*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminB5 < recipe_vitaminB5 %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminB5 = @need_vitaminB5 - vitaminB5 %>
+          <% if @need_vitaminB5 > 0 %>
+            <td><%= "ビタミンB5" %></td>
+            <td><%= @need_vitaminB5.round(1) %><%="mg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminB5 += ingredient.vitaminB5*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminB5 < recipe_vitaminB5 %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminB6 = @need_vitaminB6 - vitaminB6 %>
+          <% if @need_vitaminB6 > 0 %>
+            <td><%= "ビタミンB6" %></td>
+            <td><%= @need_vitaminB6.round(1) %><%="mg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminB6 += ingredient.vitaminB6*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminB6 < recipe_vitaminB6 %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminB12 = @need_vitaminB12 - vitaminB12 %>
+          <% if @need_vitaminB12 > 0 %>
+            <td><%= "ビタミンB12" %></td>
+            <td><%= @need_vitaminB12.round(1) %><%="μg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminB12 += ingredient.vitaminB12*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminB12 < recipe_vitaminB12 %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminC = @need_vitaminC - vitaminC %>
+          <% if @need_vitaminC > 0 %>
+            <td><%= "ビタミンC" %></td>
+            <td><%= @need_vitaminC.round(1) %><%="mg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminC += ingredient.vitaminC*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminC < recipe_vitaminC %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminD = @need_vitaminD - vitaminD %>
+          <% if @need_vitaminD > 0 %>
+            <td><%= "ビタミンD" %></td>
+            <td><%= @need_vitaminD.round(1) %><%="μg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminD += ingredient.vitaminD*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminD < recipe_vitaminD %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          </tr>
+          <tr>
+          <% @need_vitaminE = @need_vitaminE - vitaminE %>
+          <% if @need_vitaminE > 0 %>
+            <td><%= "ビタミンE" %></td>
+            <td><%= @need_vitaminE.round(1) %><%="mg"%></td>
+            <td>
+              <% @all_recipes.each do |recipe| %>
+                <% recipe.ingredients do |ingredient| %>
+                  <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
+                    <% recipe_vitaminE += ingredient.vitaminE*recipe_ingredient.quantity %>
+                  <% end %>
+                <% end %>
+                <% if @need_vitaminE < recipe_vitaminE %>
+                  <%= recipe.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
           </tr>
         </tbody>
       </table>
