@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       draft_ingredients = current_user.draft_ingredients.all
       draft_ingredients.each do |draft_ingredient|
-        recipe_ingredients = recipe.recipe_ingredients.new
+        recipe_ingredients = @recipe.recipe_ingredients.new
         recipe_ingredients.ingredient_id = draft_ingredient.ingredient_id
         recipe_ingredients.quantity = draft_ingredient.quantity
         recipe_ingredients.save
@@ -42,7 +42,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @ingredient = Ingredient.search(params[:search])
     @draft_ingredients = current_user.draft_ingredients
-    @recipe_ingredients = @recipe.recipe_ingredients
+    @recipe_ingredients = @recipe.ingredients
   end
   
   def update

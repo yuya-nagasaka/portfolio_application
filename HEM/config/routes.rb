@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+  root 'homes#top'
   get 'new/create'
   get 'new/show'
   get 'new/edit'
   get 'new/update'
   get 'new/delete'
   devise_for :users
-  root 'homes#top'
   resources :users, only: [:show, :edit, :update]
   resources :recipes
   resources :ingredients
