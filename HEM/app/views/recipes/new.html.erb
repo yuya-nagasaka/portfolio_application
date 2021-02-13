@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <% if @recipe.errors.any? %>
-        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this product from being saved:</h2>
-        <ul>
-          <% @recipe.errors.full_messages.each do |message| %>
+      <h2><%= "エラーが発生しました" %></h2>
+      <ol>
+        <% @recipe.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
-      </ul>
+      </ol>
     <% end %>
   </div>
   <div class="row">
