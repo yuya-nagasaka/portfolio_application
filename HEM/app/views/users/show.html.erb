@@ -4,7 +4,7 @@
       <h3 class="mt-5 mb-5"><span class="border pr-4 pl-4 pt-2 pb-2 ">プロフィール<span></h3>
       <table>
         <tr>
-          <td><%= attachment_image_tag @user, :image, :fill, 60, 60, fallback: "user.png",size:'50x50' %></td>
+          <td><%= attachment_image_tag @user, :image,size:'50x50',fallback: "user.png"%></td>
           <td class="border"><span class="pr-5 pl-5"><%= current_user.introduction %></span></br></td>
         </tr>
          <tr>

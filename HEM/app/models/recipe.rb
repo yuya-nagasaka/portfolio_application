@@ -8,4 +8,8 @@ class Recipe < ApplicationRecord
   has_many :lunches,through: :lunch_recipes
   has_many :dinners,through: :dinner_recipes
   has_many :dinner_recipes
+  validates :name, presence: true
+  validates :name, length: { maximum: 15 } 
+  validates :method, presence: true
+  validates :method, length: { maximum: 300 } 
 end

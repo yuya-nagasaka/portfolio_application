@@ -1,5 +1,8 @@
 class RecipesController < ApplicationController
   
+  before_action :correct,only:[:edit]
+
+
   def new
     @recipe = Recipe.new
     @ingredient = Ingredient.search(params[:search])
@@ -7,18 +10,23 @@ class RecipesController < ApplicationController
   end
   
   def create
-    recipe = Recipe.new(recipe_params)
-    recipe.user_id = current_user.id
-    recipe.save!
-    draft_ingredients = current_user.draft_ingredients.all
-    draft_ingredients.each do |draft_ingredient|
-    recipe_ingredients = recipe.recipe_ingredients.new
-    recipe_ingredients.ingredient_id = draft_ingredient.ingredient_id
-    recipe_ingredients.quantity = draft_ingredient.quantity
-    recipe_ingredients.save
+    @ingredient = Ingredient.search(params[:search])
+    @draft_ingredients = current_user.draft_ingredients
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
+    if @recipe.save
+      draft_ingredients = current_user.draft_ingredients.all
+      draft_ingredients.each do |draft_ingredient|
+        recipe_ingredients = recipe.recipe_ingredients.new
+        recipe_ingredients.ingredient_id = draft_ingredient.ingredient_id
+        recipe_ingredients.quantity = draft_ingredient.quantity
+        recipe_ingredients.save
+      end
+      current_user.draft_ingredients.destroy_all
+      redirect_to user_path(current_user)
+    else 
+      render "new"
     end
-    current_user.draft_ingredients.destroy_all
-    redirect_back(fallback_location: root_path)
   end
 
   def show
@@ -38,18 +46,23 @@ class RecipesController < ApplicationController
   end
   
   def update
-    recipe = Recipe.find(params[:id])
-    recipe.update(recipe_params)
+    @ingredient = Ingredient.search(params[:search])
+    @recipe = Recipe.find(params[:id])
+    @recipe_ingredients = @recipe.recipe_ingredients
+    @draft_ingredients = current_user.draft_ingredients
+    if @recipe.update(recipe_params)
     draft_ingredients = current_user.draft_ingredients.all
     draft_ingredients.each do |draft_ingredient|
-    recipe_ingredients = recipe.recipe_ingredients.new
-    recipe_ingredients.ingredient_id = draft_ingredient.ingredient_id
-    recipe_ingredients.quantity = draft_ingredient.quantity
-    recipe_ingredients.save
+      recipe_ingredients = @recipe.recipe_ingredients.new
+      recipe_ingredients.ingredient_id = draft_ingredient.ingredient_id
+      recipe_ingredients.quantity = draft_ingredient.quantity
+      recipe_ingredients.save
     end
     current_user.draft_ingredients.destroy_all
     redirect_back(fallback_location: root_path)
-    
+    else
+      render "edit"
+    end
   end
   
   
@@ -72,5 +85,13 @@ class RecipesController < ApplicationController
     else
       none
     end
+  end
+  
+  def  correct                                                       
+    @recipe = Recipe.find(params[:id])
+    unless 
+      @recipe.user.id == current_user.id
+      redirect_to user_path(current_user)
+    end 
   end
 end

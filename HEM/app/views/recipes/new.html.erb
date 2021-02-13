@@ -1,5 +1,15 @@
 <div class="container">
   <div class="row">
+    <% if @recipe.errors.any? %>
+        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <ul>
+          <% @recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class="row">
     <div class="col-md-3">
       <h4 class="mt-5 mb-5">食材検索</h4>
       <%= form_tag(new_recipe_path,:method=>"get")do %>
