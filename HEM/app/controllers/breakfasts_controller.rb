@@ -23,7 +23,6 @@ class BreakfastsController < ApplicationController
   def Recipe.search(search)
     if search
       where(['name LIKE ?', "%#{search}%"]) 
-      # where(['ingredient(カラム) LIKE ?', "%#{search(検索文字)}%"]) 
     else
       all
     end
