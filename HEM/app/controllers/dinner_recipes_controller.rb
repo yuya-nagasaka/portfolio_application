@@ -1,10 +1,8 @@
 class DinnerRecipesController < ApplicationController
   def create
-    if current_user.dinner.nil?
-      dinner = Dinner.new
-      dinner.user_id = current_user.id
-      dinner.save
-    end
+    dinner = Dinner.new
+    dinner.user_id = current_user.id
+    dinner.save
     dinner_recipe = DinnerRecipe.new
     dinner_recipe.recipe_id = params[:recipe_id]
     dinner_recipe.dinner_id = current_user.dinner.id
