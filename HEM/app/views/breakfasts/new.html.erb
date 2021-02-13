@@ -20,12 +20,72 @@
           </tr>
         </thead>
         <tbody>
-        <% @breakfast_recipes.each do |breakfast_recipe| %>
-        <tr class="border-top border-bottom">
-          <td class="pb-4 pr-4 pt-4"><%= breakfast_recipe.recipe.name %></td>
-          <td class="pb-4 pr-4 pt-4"><%= link_to "削除",breakfast_recipe_path(breakfast_recipe.id),method: :delete %></td>
-        </tr>
-        <% end %>
+          <% @breakfast_recipes.each do |breakfast_recipe| %>
+            <tr class="border-top border-bottom">
+              <td class="pb-4 pr-4 pt-4"><%= breakfast_recipe.recipe.name %></td>
+              <td class="pb-4 pr-4 pt-4"><%= link_to "削除",breakfast_recipe_path(breakfast_recipe.id),method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+        <%# 各栄養素データを入れる空箱 %>
+        <% vitaminA = 0 %>
+        <% vitaminB1 = 0 %>
+        <% vitaminB2 = 0 %>
+        <% vitaminB3 = 0 %>
+        <% vitaminB5 = 0 %>
+        <% vitaminB6 = 0 %>
+        <% vitaminB12 = 0 %>
+        <% vitaminC = 0 %>
+        <% vitaminD = 0 %>
+        <% vitaminE = 0 %>
+        <% recipe_vitaminA = 0 %>
+         <%# 朝食で摂取可能な各栄養素を取得 %>
+          <% unless @user_breakfast.nil? %>
+            <% @user_breakfast.recipes.each do |breakfast_recipe| %>
+              <% breakfast_recipe.ingredients.each do |breakfast_ingredient| %>
+                <% breakfast_ingredient.recipe_ingredients.each do |recipe_ingredient|  %>
+                  <% vitaminA += breakfast_ingredient.vitaminA*recipe_ingredient.quantity %>
+                  <% vitaminB1 += breakfast_ingredient.vitaminB1*breakfast_ingredient.quantity %>
+                  <% vitaminB2 += breakfast_ingredient.vitaminB2*breakfast_ingredient.quantity %>
+                  <% vitaminB3 += breakfast_ingredient.vitaminB3*breakfast_ingredient.quantity %>
+                  <% vitaminB5 += breakfast_ingredient.vitaminB5*breakfast_ingredient.quantity %>
+                  <% vitaminB6 += breakfast_ingredient.vitaminB6*breakfast_ingredient.quantity %>
+                  <% vitaminB12 += breakfast_ingredient.vitaminB12*breakfast_ingredient.quantity %>
+                  <% vitaminC += breakfast_ingredient.vitaminC*breakfast_ingredient.quantity %>
+                  <% vitaminD += breakfast_ingredient.vitaminD*breakfast_ingredient.quantity %>
+                  <% vitaminE += breakfast_ingredient.vitaminE*breakfast_ingredient.quantity %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+       <table>    
+        <tbody>
+          <tr>
+            <td>不足栄養素</td>
+            <td>不足量</td>
+            <td>提案レシピ</td>
+          </tr>
+          <tr>
+          <% @need_vitaminA = @need_vitaminA - vitaminA %>
+          <% if @need_vitaminA > 0 %>
+            <td><%= "ビタミンA" %></td>
+            <td><%= @need_vitaminA.round %><%="μgRAE"%></td>
+          <% end %>
+            <td>
+              <% @need_vitaminA = @need_vitaminA - vitaminA %>
+              <% if @need_vitaminA > 0 %>
+                <% @all_recipes.each do |recipe| %>
+                  <% recipe.ingredients do |ingredient| %>
+                  <% recipe_vitaminA += ingredient.vitaminA %>
+                    <% if @need_vitaminA < recipe_vitaminA %>
+                      <%= recipe.name %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

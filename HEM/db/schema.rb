@@ -62,20 +62,20 @@ ActiveRecord::Schema.define(version: 2021_02_05_180211) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
-    t.integer "quantity"
-    t.float "carbohydrate"
-    t.float "protein"
-    t.float "fat"
-    t.float "vitaminA"
-    t.float "vitaminB1"
-    t.float "vitaminB2"
-    t.float "vitaminB3"
-    t.float "vitaminB5"
-    t.float "vitaminB6"
-    t.float "vitaminB12"
-    t.float "vitaminC"
-    t.float "vitaminD"
-    t.float "vitaminE"
+    t.integer "quantity", default: 0, null: false
+    t.float "carbohydrate", default: 0.0, null: false
+    t.float "protein", default: 0.0, null: false
+    t.float "fat", default: 0.0, null: false
+    t.float "vitaminA", default: 0.0, null: false
+    t.float "vitaminB1", default: 0.0, null: false
+    t.float "vitaminB2", default: 0.0, null: false
+    t.float "vitaminB3", default: 0.0, null: false
+    t.float "vitaminB5", default: 0.0, null: false
+    t.float "vitaminB6", default: 0.0, null: false
+    t.float "vitaminB12", default: 0.0, null: false
+    t.float "vitaminC", default: 0.0, null: false
+    t.float "vitaminD", default: 0.0, null: false
+    t.float "vitaminE", default: 0.0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
