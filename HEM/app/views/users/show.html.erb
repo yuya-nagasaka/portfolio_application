@@ -5,11 +5,11 @@
       <table>
         <tr>
           <td><%= attachment_image_tag @user, :image,size:'50x50',fallback: "user.png"%></td>
-          <td class="border"><span class="pr-5 pl-5"><%= current_user.introduction %></span></br></td>
+          <td class="border"><span><%= current_user.introduction %></span></br></td>
         </tr>
          <tr>
-          <td><span><%= current_user.name %></span></td>
-          <td><span>紹介文</span></br></td>
+          <td><%= current_user.name %></td>
+          <td>一言コメント</br></td>
         </tr>
       </table>
       <%= link_to "編集",edit_user_path,class: 'btn btn-success mt-2 mb-2 w-75' %>

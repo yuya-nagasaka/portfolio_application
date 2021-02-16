@@ -1,4 +1,12 @@
 <div class="m-5">
+  <% if @user.errors.any? %>
+        <h2><%= "エラーが発生しました" %></h2>
+        <ol>
+          <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ol>
+    <% end %>
   <%= form_with model:@user, url:"/users/#{@user.id}",local:true do |f| %>
     <h2 class="mb-3">名前</h2>
     <%= f.text_field :name %>
