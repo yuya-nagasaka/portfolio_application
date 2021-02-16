@@ -42,7 +42,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @ingredient = Ingredient.search(params[:search])
     @draft_ingredients = current_user.draft_ingredients
-    @recipe_ingredients = @recipe.ingredients
+    @recipe_ingredients = @recipe.recipe_ingredients
   end
   
   def update
