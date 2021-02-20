@@ -7,7 +7,7 @@ class BreakfastRecipesController < ApplicationController
     breakfast_recipe = BreakfastRecipe.new
     breakfast_recipe.recipe_id = params[:recipe_id]
     breakfast_recipe.breakfast_id = current_user.breakfast.id
-    breakfast_recipe.save!
+    breakfast_recipe.save
     redirect_back(fallback_location: root_path)
   end
   

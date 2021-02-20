@@ -5,7 +5,7 @@ class DinnersController < ApplicationController
     @dinner_recipes = DinnerRecipe.all
     @user_dinner = current_user.dinner
     @all_recipes = Recipe.all
-    @need_vitaminA = 300
+   @need_vitaminA = 300
     @need_vitaminB1 = 0.5
     @need_vitaminB2 = 0.6
     @need_vitaminB3 = 6

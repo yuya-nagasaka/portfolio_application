@@ -33,8 +33,8 @@
         <% recipe_vitaminD = 0 %>
         <% recipe_vitaminE = 0 %>
         <% num = 0 %>
-          <% unless @user_breakfast.nil? %>
-            <% @user_breakfast.recipes.each do |breakfast_recipe| %>
+          <% user_breakfast = current_user.breakfast %>
+            <% user_breakfast.recipes.each do |breakfast_recipe| %>
               <% breakfast_recipe.ingredients.each do |breakfast_ingredient| %>
                 <% breakfast_ingredient.recipe_ingredients.each do |recipe_ingredient|  %>
                   <% vitaminA += breakfast_ingredient.vitaminA*recipe_ingredient.quantity %>
@@ -50,8 +50,7 @@
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
-      <div class="col-md-3">
+        <div class="col-md-3">
         <h2 class="mb-5 mt-5">使用レシピ</h2>
         <table>
           <thead>

@@ -4,7 +4,6 @@ class BreakfastsController < ApplicationController
     @breakfast = Breakfast.new
     @recipes = Recipe.search(params[:search])
     @breakfast_recipes = BreakfastRecipe.all
-    @user_breakfast = current_user.breakfast
     @all_recipes = Recipe.all
     @need_vitaminA = 300
     @need_vitaminB1 = 0.5
