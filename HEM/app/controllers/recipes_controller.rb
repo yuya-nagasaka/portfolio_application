@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   
+  before_action :set_recipe,only:[:show,:edit,:update,:destroy]
   before_action :correct,only:[:edit]
-  before_action :set_recipe,only:[:show,:edit,:update]
   before_action :set_search_ingredient,only:[:new,:create,:edit,:update]
 
   def new
@@ -27,7 +27,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe_ingredients = @recipe.recipe_ingredients
   end
   
   def index
@@ -35,8 +34,6 @@ class RecipesController < ApplicationController
   end
   
   def edit
-    @draft_ingredients = current_user.draft_ingredients
-    @recipe_ingredients = @recipe.recipe_ingredients
   end
   
   def update
@@ -59,8 +56,7 @@ class RecipesController < ApplicationController
   
   
   def destroy
-    recipe = Recipe.find(params[:id])
-    recipe.delete
+    @recipe.delete
     redirect_back(fallback_location: root_path)
   end
   

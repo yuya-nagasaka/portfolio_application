@@ -39,7 +39,8 @@
           </tr>
         </thead>
         <tbody>
-        <% @recipe_ingredients.each do |recipe_ingredient| %>
+        <% recipe_ingredients = @recipe.recipe_ingredients %>
+        <% recipe_ingredients.each do |recipe_ingredient| %>
           <%= form_with model:recipe_ingredient,url:recipe_ingredient_path(recipe_ingredient),local:true do|f|%>
             <tr class="border-top border-bottom">
               <td class="pt-2 pb-2"><%= recipe_ingredient.ingredient.name %></td>
@@ -48,7 +49,8 @@
             </tr>
           <% end %>
         <% end %>
-        <% @draft_ingredients.each do |draft_ingredient| %>
+        <% draft_ingredients = current_user.draft_ingredients%>
+        <% draft_ingredients.each do |draft_ingredient| %>
         <%= form_with model:draft_ingredient,local:true do|f|%>
           <tr class="border-top border-bottom">
             <td class="pt-2 pb-2"><%= draft_ingredient.ingredient.name %></td>

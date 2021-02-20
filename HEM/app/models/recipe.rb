@@ -11,5 +11,7 @@ class Recipe < ApplicationRecord
   validates :name, presence: true
   validates :name, length: { maximum: 15 } 
   validates :method, presence: true
-  validates :method, length: { maximum: 300 } 
+  validates :method, length: { maximum: 300 }
+  
+  
 end

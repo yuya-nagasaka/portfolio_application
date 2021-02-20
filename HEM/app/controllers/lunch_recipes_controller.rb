@@ -1,4 +1,5 @@
 class LunchRecipesController < ApplicationController
+  
   def create
     lunch = Lunch.new
     lunch.user_id = current_user.id
