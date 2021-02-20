@@ -39,7 +39,8 @@
           </tr>
         </thead>
         <tbody>
-        <% @draft_ingredients.each do |draft_ingredient| %>
+        <% draft_ingredients = current_user.draft_ingredients %>
+        <% draft_ingredients.each do |draft_ingredient| %>
           <tr class="border-top border-bottom">
             <td class="pt-2 pb-2"><%= draft_ingredient.ingredient.name %></td>
             <%= form_with model:draft_ingredient,local:true do|f|%>

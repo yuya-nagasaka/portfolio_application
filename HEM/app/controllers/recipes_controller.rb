@@ -6,11 +6,9 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @draft_ingredients = current_user.draft_ingredients
   end
   
   def create
-    @draft_ingredients = current_user.draft_ingredients
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
     if @recipe.save
