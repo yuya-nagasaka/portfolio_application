@@ -7,7 +7,7 @@
         <%= text_field_tag :search %>
         <%= submit_tag "Serch" %>
       <% end %>
-      <% @recipes.each do |recipe| %>
+      <% @search_recipes.each do |recipe| %>
         <div class="pt-2 pb-2"><%= link_to "#{recipe.name}",recipe_path(recipe.id) %></div>
         <%= button_to "追加",{controller: 'breakfast_recipes', action: 'create' }, {method: :post,params: {recipe_id: recipe.id}}%></br>
       <% end %>
@@ -70,7 +70,7 @@
             </tr>
           </thead>
           <tbody>
-          <% @breakfast_recipes.each do |breakfast_recipe| %>
+          <% @all_breakfast_recipes.each do |breakfast_recipe| %>
             <tr class="border-top border-bottom">
               <td class="pb-4 pr-4 pt-4"><%= breakfast_recipe.recipe.name %></td>
               <td class="pb-4 pr-4 pt-4"><%= link_to "削除",breakfast_recipe_path(breakfast_recipe.id),method: :delete %></td>
