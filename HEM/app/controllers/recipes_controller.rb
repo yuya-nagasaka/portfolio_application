@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   
   before_action :correct,only:[:edit]
-
+  before_action :set_recipe,only:[:show,:edit,:update]
 
   def new
     @recipe = Recipe.new
@@ -30,7 +30,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
     @recipe_ingredients = @recipe.recipe_ingredients
   end
   
@@ -39,7 +38,6 @@ class RecipesController < ApplicationController
   end
   
   def edit
-    @recipe = Recipe.find(params[:id])
     @ingredient = Ingredient.search(params[:search])
     @draft_ingredients = current_user.draft_ingredients
     @recipe_ingredients = @recipe.recipe_ingredients
@@ -47,7 +45,6 @@ class RecipesController < ApplicationController
   
   def update
     @ingredient = Ingredient.search(params[:search])
-    @recipe = Recipe.find(params[:id])
     @recipe_ingredients = @recipe.recipe_ingredients
     @draft_ingredients = current_user.draft_ingredients
     if @recipe.update(recipe_params)
@@ -78,20 +75,15 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:name,:method,:user_id)
   end
   
-  def Ingredient.search(search)
-    if search
-      where(['name LIKE ?', "%#{search}%"]) 
-      # where(['ingredient(カラム) LIKE ?', "%#{search(検索文字)}%"]) 
-    else
-      none
-    end
-  end
-  
   def  correct                                                       
-    @recipe = Recipe.find(params[:id])
     unless 
       @recipe.user.id == current_user.id
       redirect_to user_path(current_user)
     end 
   end
+  
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
+  
 end
