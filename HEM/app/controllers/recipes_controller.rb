@@ -2,15 +2,14 @@ class RecipesController < ApplicationController
   
   before_action :correct,only:[:edit]
   before_action :set_recipe,only:[:show,:edit,:update]
+  before_action :set_search_ingredient,only:[:new,:create,:edit,:update]
 
   def new
     @recipe = Recipe.new
-    @ingredient = Ingredient.search(params[:search])
     @draft_ingredients = current_user.draft_ingredients
   end
   
   def create
-    @ingredient = Ingredient.search(params[:search])
     @draft_ingredients = current_user.draft_ingredients
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
@@ -38,13 +37,11 @@ class RecipesController < ApplicationController
   end
   
   def edit
-    @ingredient = Ingredient.search(params[:search])
     @draft_ingredients = current_user.draft_ingredients
     @recipe_ingredients = @recipe.recipe_ingredients
   end
   
   def update
-    @ingredient = Ingredient.search(params[:search])
     @recipe_ingredients = @recipe.recipe_ingredients
     @draft_ingredients = current_user.draft_ingredients
     if @recipe.update(recipe_params)
@@ -84,6 +81,10 @@ class RecipesController < ApplicationController
   
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+  
+  def set_search_ingredient
+    @ingredient = Ingredient.search(params[:search])
   end
   
 end
