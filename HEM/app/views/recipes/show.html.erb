@@ -1,15 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <%= form_with model:@recipe,local:true do |f| %>
-        <h4 class="mb-5 mt-5">レシピ名</h2>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-3">
+      <%= form_with model:@recipe, local:true do |f| %>
+        <h4 class = "mb-5 mt-5">レシピ名</h2>
         <%= f.text_field :name %>
-        <h4 class="mb-5 mt-5">調理手順</h2>
+        <h4 class = "mb-5 mt-5">調理手順</h2>
         <%= f.text_area :method %></br>
       <% end %>
     </div>
-    <div class="col-md-7">
-      <h4 class="mb-5 mt-5">使用食材</h4>
+    <div class = "col-md-7">
+      <h4 class = "mb-5 mt-5">使用食材</h4>
       <table>
         <thead>
           <tr>
@@ -20,10 +20,10 @@
         <tbody>
           <% recipe_ingredients = @recipe.recipe_ingredients %>
           <% recipe_ingredients.each do |recipe_ingredient| %>
-            <tr class="border-top border-bottom">
-              <td class="pt-2 pb-2"><%= recipe_ingredient.ingredient.name %></td>
-              <%= form_with model:recipe_ingredient,local:true do|f|%>
-                <td class="pt-2 pb-2"><%=f.text_field :quantity %> g </td>
+            <tr class = "border-top border-bottom">
+              <td class = "pt-2 pb-2"><%= recipe_ingredient.ingredient.name %></td>
+              <%= form_with model:recipe_ingredient, local:true do |f| %>
+                <td class = "pt-2 pb-2"><%= f.text_field :quantity %> g </td>
               <% end %>
             </tr>
           <% end %>
