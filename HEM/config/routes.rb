@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'homes#top'
   get 'new/create'
@@ -6,7 +8,7 @@ Rails.application.routes.draw do
   get 'new/update'
   get 'new/delete'
   devise_for :users
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: %i[show edit update]
   resources :recipes
   resources :ingredients
   resources :draft_ingredients

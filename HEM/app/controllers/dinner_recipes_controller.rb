@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class DinnerRecipesController < ApplicationController
-  
   def create
     dinner = Dinner.new
     dinner.user_id = current_user.id
@@ -10,11 +11,10 @@ class DinnerRecipesController < ApplicationController
     dinner_recipe.save
     redirect_back(fallback_location: root_path)
   end
-  
+
   def destroy
     dinner_recipe = DinnerRecipe.find(params[:id])
     dinner_recipe.delete
     redirect_back(fallback_location: root_path)
   end
-  
 end
