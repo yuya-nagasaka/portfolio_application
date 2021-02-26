@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     @recipes = current_user.recipes
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @user.update(user_params)
