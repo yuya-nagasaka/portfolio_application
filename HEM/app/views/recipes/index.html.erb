@@ -16,7 +16,9 @@
         <td class="pr-2 pl-2"><%= link_to "#{recipe.user.name}",user_path(recipe.user)%></td>
         <td class="pr-2 pl-2"><%= link_to "#{recipe.name}",recipe_path(recipe) %></td>
         <% if recipe.user_id == current_user.id %>
-        <td class="pr-2 pl-2"><%= link_to "編集",edit_recipe_path(recipe.id),class: "btn btn-success p-1" %></td>
+          <td class="pl-2"><%= link_to "編集",edit_recipe_path(recipe.id),class: "btn btn-success p-1" %></td>
+        <% else %>
+          <td class="pl-2"></td>
         <% end %>
       </tr>
     <% end %>
