@@ -6,11 +6,11 @@
       </h3>
       <div>
         <%= attachment_image_tag @user, :image, size: '50x50', fallback: "user.png" %>　　
-        <%= current_user.name %>
+        <%= @user.name %>
       </div>
       <div>
         <p class = "pt-3"><b>紹介文</b></p></br>
-        <textarea readonly rows = "5" cols = "25"><%= current_user.introduction%></textarea>
+        <textarea readonly rows = "5" cols = "25"><%= @user.introduction%></textarea>
       </div>
       <%= link_to "編集", edit_user_path, class: 'btn btn-success mt-2 mb-2 w-75' %>
       <h3 class = "mt-5 mb-5 w-100" >
