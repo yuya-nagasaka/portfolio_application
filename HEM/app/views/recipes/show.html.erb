@@ -3,9 +3,9 @@
     <div class = "col-md-3">
       <%= form_with model:@recipe, local:true do |f| %>
         <h4 class = "mb-5 mt-5">レシピ名</h2>
-        <%= f.text_field :name %>
+        <%= f.text_field :name,:readonly => true %>
         <h4 class = "mb-5 mt-5">調理手順</h2>
-        <%= f.text_area :method,:size => "23x15" %></br>
+        <%= f.text_area :method,:size => "23x15",:readonly => true %></br>
       <% end %>
     </div>
     <div class = "col-md-7">
@@ -23,7 +23,7 @@
             <tr class = "border-top border-bottom">
               <td class = "pt-2 pb-2"><%= recipe_ingredient.ingredient.name %></td>
               <%= form_with model:recipe_ingredient, local:true do |f| %>
-                <td class = "pt-2 pb-2"><%= f.text_field :quantity,:size => "5" %> g </td>
+                <td class = "pt-2 pb-2"><%= f.text_field :quantity,:size => "5",:readonly => true %> g </td>
               <% end %>
             </tr>
           <% end %>
