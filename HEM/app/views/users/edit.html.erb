@@ -9,12 +9,12 @@
   <% end %>
   <%= form_with model:@user, url:"/users/#{@user.id}", local:true do |f| %>
     <h2 class = "mb-3" >名前</h2>
-    <%= f.text_field:name %>
+    <%= f.text_field:name,:size => "15" %>
     <h2 class = "mb-3 mt-3" >プロフィール画像</h2>
     <%= attachment_image_tag @user, :image, size: '75x75', fallback: "user.png", class: "mt-4" %></br>
     <%= f.attachment_field:image, class: "mt-4" %>
     <h2 class = "mb-3 mt-3" >紹介文</h2>
-    <%= f.text_area:introduction, class: "w-25" %></br>
+    <%= f.text_area:introduction,:size => "45x10" %></br>
     <%= f.submit "保存", class: "btn btn-success w-25 mt-4" %>
   <% end %>
 </div>

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_one :lunch
   has_one :dinner
   attachment :image
-  validates :introduction, length: { maximum: 10 }
+  validates :introduction, length: { maximum: 200 }
   validates :name, length: { maximum: 10 }
   validates :name, presence: true
 end
