@@ -54,10 +54,10 @@
           </tr>
         </thead>
         <tbody>
-          <% @all_lunch_recipes.each do |lunch_recipe| %>
+          <% @all_dinner_recipes.each do |dinner_recipe| %>
             <tr class = "border-top border-bottom">
-              <td class = "pb-4 pr-4 pt-4"><%= lunch_recipe.recipe.name %></td>
-              <td class = "pb-4 pr-4 pt-4"><%= link_to "削除", lunch_recipe_path(lunch_recipe.id), method: :delete %></td>
+              <td class = "pb-4 pr-4 pt-4"><%= dinner_recipe.recipe.name %></td>
+              <td class = "pb-4 pr-4 pt-4"><%= link_to "削除", dinner_recipe_path(dinner_recipe.id), method: :delete %></td>
             </tr>
           <% end %>
         </tbody>
