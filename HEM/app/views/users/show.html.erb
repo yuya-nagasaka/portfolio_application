@@ -2,7 +2,7 @@
   <div class = "row" >
     <div class = "col-md-3" >
       <h3 class = "mt-5 mb-5" >
-        <span class = "border pr-4 pl-4 pt-2 pb-2" >プロフィール<span>
+        <span class = "border border-dark pr-4 pl-4 pt-2 pb-2" >プロフィール<span>
       </h3>
       <div>
         <%= attachment_image_tag @user, :image, size: '50x50', fallback: "user.png" %>　　
@@ -16,22 +16,22 @@
         <%= link_to "編集", edit_user_path, class: 'btn btn-success mt-2 mb-2 w-75' %>
       <% end %>
       <h3 class = "mt-5 mb-5 w-100" >
-        <span class = "border pr-5 pl-5 pt-2 pb-2" >食事記録<span>
+        <span class = "border border-dark pr-5 pl-5 pt-2 pb-2" >食事記録<span>
       </h3>
       <h4 class = "mt-4 mb-4" >
-        <span class = "border rounded pr-4 pl-4 pt-2 pb-2">朝食</span>
+        <span class = "border rounded border-dark pr-4 pl-4 pt-2 pb-2">朝食</span>
         <% if @user == current_user %>
           <%= link_to "記録", new_breakfast_path, class: 'btn btn-success ml-3' %>
         <% end %>
       </h4>
       <h4 class="mt-4 mb-4">
-        <span class = "border rounded pr-4 pl-4 pt-2 pb-2">昼食</span>
+        <span class = "border rounded border-dark pr-4 pl-4 pt-2 pb-2">昼食</span>
         <% if @user == current_user %>
           <%= link_to "記録", new_lunch_path, class: 'btn btn-success ml-3' %>
         <% end %>
       </h4>
       <h4 class="mt-4 mb-4">
-        <span class = "border rounded pr-4 pl-4 pt-2 pb-2">夕食</span>
+        <span class = "border rounded border-dark pr-4 pl-4 pt-2 pb-2">夕食</span>
         <% if @user == current_user %>
           <%= link_to "記録", new_dinner_path, class: 'btn btn-success ml-3' %>
         <% end %>
@@ -39,7 +39,7 @@
     </div>
     <div class = "col-md-7">
       <h3 class = "mt-5 mb-5">
-        <span class = "border  pr-5 pl-5 pt-2 pb-2">投稿レシピ一覧<span>
+        <span class = "border border-dark  pr-5 pl-5 pt-2 pb-2">投稿レシピ一覧<span>
       </h3>
       <table>
         <thead>
