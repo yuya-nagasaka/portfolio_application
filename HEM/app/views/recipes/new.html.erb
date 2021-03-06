@@ -41,7 +41,7 @@
         <tbody>
         <% draft_ingredients = current_user.draft_ingredients %>
         <% draft_ingredients.each do |draft_ingredient| %>
-          <tr class = "border-top border-bottom">
+          <tr class = "border-top border-bottom  border-dark">
             <td class = "pt-2 pb-2"><%= draft_ingredient.ingredient.name %></td>
             <%= form_with model:draft_ingredient, local:true do |f| %>
             <td class = "pt-2 pb-2"><%=f.text_field :quantity %>　g　<%= f.submit "数量更新", class: "btn btn-success" %></td>

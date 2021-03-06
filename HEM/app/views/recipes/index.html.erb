@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     <% @recipes.each do |recipe| %>
-      <tr class="border-top border-bottom">
+      <tr class="border-top border-bottom border-dark">
         <td class="pt-2 pb-2"><%= attachment_image_tag recipe.user, :image,size:'50x50',fallback: "user.png"%></td>
         <td class="pr-2 pl-2"><%= link_to "#{recipe.user.name}",user_path(recipe.user)%></td>
         <td class="pr-2 pl-2"><%= link_to "#{recipe.name}",recipe_path(recipe) %></td>

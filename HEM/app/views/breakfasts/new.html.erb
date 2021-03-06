@@ -53,7 +53,7 @@
         </thead>
         <tbody>
         <% @all_breakfast_recipes.each do |breakfast_recipe| %>
-          <tr class = "border-top border-bottom">
+          <tr class = "border-top border-bottom border-dark">
             <td class = "pb-4 pr-4 pt-4"><%= breakfast_recipe.recipe.name %></td>
             <td class = "pb-4 pr-4 pt-4"><%= link_to "削除", breakfast_recipe_path(breakfast_recipe.id), method: :delete %></td>
           </tr>

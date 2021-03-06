@@ -50,7 +50,7 @@
         </thead>
         <tbody>
         <% @recipes.each do |recipe| %>
-          <tr class = "border-bottom border-top ">
+          <tr class = "border-bottom border-top border-dark">
             <% if recipe.user == current_user %>
               <td class = "pt-2 pb-2 w-75"><%= link_to "#{recipe.name}",recipe_path(recipe) %></td>
               <td class = "pt-2 pb-2">　<%= link_to "編集", edit_recipe_path(recipe.id), class: "btn btn-success p-1" %></td>
