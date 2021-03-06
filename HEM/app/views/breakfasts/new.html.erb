@@ -12,8 +12,7 @@
         <%= button_to "追加", {controller: 'breakfast_recipes', action: 'create' }, {method: :post,params: {recipe_id: recipe.id}} %></br>
       <% end %>
     </div>
-    
-    <%# 1食で取得できる栄養素量 %>
+  
     <% vitaminA = 0 %>
     <% vitaminB1 = 0 %>
     <% vitaminB2 = 0 %>

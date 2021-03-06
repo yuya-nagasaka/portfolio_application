@@ -13,4 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ 
+ .background {
+  background-image: image-url('diet.jpg');
+  background-size:cover;
+}
 @import "bootstrap";
