@@ -10,7 +10,7 @@
     <% end %>
   </div>
   <div class = "row">
-    <div class = "col-md-3">
+    <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
       <h4 class = "mt-5 mb-5">食材検索</h4>
       <%= form_tag(new_recipe_path, :method=>"get") do %>
         <%= text_field_tag :search %>
@@ -22,13 +22,13 @@
       <% end %>
       <%= form_with model:@recipe, local:true do |f| %>
         <h4 class = "mb-5 mt-5">レシピ名</h4>
-        <%= f.text_field :name %>
+        <%= f.text_field :name,:size => "29" %>
         <h4  class = "mb-5 mt-5">調理手順</h4>
         <%= f.text_area :method, class: "w-100" %></br>
         <%= f.submit "投稿", class: "btn btn-success mt-3 w-100" %>
       <% end %>
     </div>
-    <div class = "col-md-7">
+    <div class = "col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 ml-3">
       <h4 class = "mb-5 mt-5">使用食材</h4>
       <table>
         <thead>
