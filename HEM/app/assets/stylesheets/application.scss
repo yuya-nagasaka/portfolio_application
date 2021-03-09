@@ -15,8 +15,9 @@
  */
  
  .background {
-  background-image: image-url('gray.jpg');
-  background-size:cover;
+  background-color:#EEE
 }
 
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import "bootstrap";
