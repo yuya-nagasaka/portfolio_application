@@ -14,7 +14,7 @@
       <h4 class = "mt-5 mb-5">食材検索</h4>
       <%= form_tag(new_recipe_path, :method=>"get") do %>
         <%= text_field_tag :search %>
-        <%= submit_tag "Serch" %>
+        <%= submit_tag "Serch",class:"rounded" %>
       <% end %>
       <% @ingredient.each do |ingredient| %>
         <%= ingredient.name%>
@@ -22,10 +22,10 @@
       <% end %>
       <%= form_with model:@recipe, local:true do |f| %>
         <h4 class = "mb-5 mt-5">レシピ名</h4>
-        <%= f.text_field :name,:size => "29" %>
+        <%= f.text_field :name,:size => "29",class:"rounded" %>
         <h4  class = "mb-5 mt-5">調理手順</h4>
-        <%= f.text_area :method, class: "w-100" %></br>
-        <%= f.submit "投稿", class: "btn btn-success mt-3 w-100" %>
+        <%= f.text_area :method, class: "w-100 rounded" %></br>
+        <%= f.submit "投稿", class: "btn btn-secondary mt-3 w-100" %>
       <% end %>
     </div>
     <div class = "col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 ml-3">

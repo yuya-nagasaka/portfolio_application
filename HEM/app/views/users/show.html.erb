@@ -2,7 +2,7 @@
   <div class = "row" >
     <div class = "col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" >
       <h3 class = "mt-5 mb-5" >
-        <span class = "border border-dark pr-3 pl-3 pt-2 pb-2" >プロフィール<span>
+        <span class = "border border-dark pr-3 pl-3 pt-2 pb-2 rounded" >プロフィール<span>
       </h3>
       <div>
         <%= attachment_image_tag @user, :image, size: '50x50', fallback: "user.png" %>　　
@@ -13,33 +13,33 @@
         <textarea readonly rows = "5" cols = "25"><%= @user.introduction%></textarea>
       </div>
       <% if @user == current_user %>
-        <%= link_to "編集", edit_user_path, class: 'btn btn-success mt-2 mb-2',style:"width:205px" %>
+        <%= link_to "編集", edit_user_path, class: 'btn btn-secondary mt-2 mb-2',style:"width:205px" %>
       <% end %>
       <h3 class = "mt-5 mb-5 w-100" >
-        <span class = "border border-dark pr-5 pl-5 pt-2 pb-2" >食事記録<span>
+        <span class = "border border-dark pr-5 pl-5 pt-2 pb-2 rounded" >食事記録<span>
       </h3>
       <h4 class = "mt-4 mb-4" >
         <span class = "border rounded border-dark pr-4 pl-4 pt-2 pb-2">朝食</span>
         <% if @user == current_user %>
-          <%= link_to "記録", new_breakfast_path, class: 'btn btn-success ml-3',style:"width:90px" %>
+          <%= link_to "記録", new_breakfast_path, class: 'btn btn-secondary ml-3',style:"width:90px" %>
         <% end %>
       </h4>
       <h4 class="mt-4 mb-4">
         <span class = "border rounded border-dark pr-4 pl-4 pt-2 pb-2">昼食</span>
         <% if @user == current_user %>
-          <%= link_to "記録", new_lunch_path, class: 'btn btn-success ml-3',style:"width:90px" %>
+          <%= link_to "記録", new_lunch_path, class: 'btn btn-secondary ml-3',style:"width:90px" %>
         <% end %>
       </h4>
       <h4 class="mt-4 mb-4">
         <span class = "border rounded border-dark pr-4 pl-4 pt-2 pb-2">夕食</span>
         <% if @user == current_user %>
-          <%= link_to "記録", new_dinner_path, class: 'btn btn-success ml-3',style:"width:90px" %>
+          <%= link_to "記録", new_dinner_path, class: 'btn btn-secondary ml-3',style:"width:90px" %>
         <% end %>
       </h4>
     </div>
     <div class = "col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
       <h3 class = "mt-5 mb-5">
-        <span class = "border border-dark  pr-5 pl-5 pt-2 pb-2">投稿レシピ一覧<span>
+        <span class = "border border-dark  pr-5 pl-5 pt-2 pb-2 rounded">投稿レシピ一覧<span>
       </h3>
       <table>
         <thead>
@@ -52,9 +52,9 @@
         <% @recipes.each do |recipe| %>
           <tr class = "border-bottom border-top border-dark">
             <% if recipe.user == current_user %>
-              <td class = "pt-2 pb-2 w-75"><%= link_to "#{recipe.name}",recipe_path(recipe) %></td>
-              <td class = "pt-2 pb-2">　<%= link_to "編集", edit_recipe_path(recipe.id), class: "btn btn-success p-1" %></td>
-              <td class = "pt-2 pb-2">　<%= link_to "削除", recipe_path(recipe.id), method: :delete, class: "btn btn-danger p-1" %></td>
+              <td class = "pt-2 pb-2 w-75"><%= link_to "#{recipe.name}",recipe_path(recipe),class:"text-dark" %></td>
+              <td class = "pt-2 pb-2">　<%= link_to "編集", edit_recipe_path(recipe.id), class: "btn btn-secondary p-1" %></td>
+              <td class = "pt-2 pb-2">　<%= link_to "削除", recipe_path(recipe.id), method: :delete, class: "btn btn-dark p-1" %></td>
             <% else %>
               <td class = "pt-2 pb-2 w-100"><%= link_to "#{recipe.name}",recipe_path(recipe) %></td>
             <% end %>
