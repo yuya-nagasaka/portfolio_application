@@ -41,19 +41,20 @@
     
     <% user_breakfast = current_user.breakfast %>
     <% unless user_breakfast.nil? %>
-    <% user_breakfast.recipes.each do |breakfast_recipe| %>
-      <% breakfast_recipe.ingredients.each do |breakfast_ingredient| %>
-        <% breakfast_ingredient.recipe_ingredients.each do |recipe_ingredient|  %>
-          <% vitaminA += breakfast_ingredient.vitaminA*recipe_ingredient.quantity %>
-          <% vitaminB1 += breakfast_ingredient.vitaminB1*recipe_ingredient.quantity %>
-          <% vitaminB2 += breakfast_ingredient.vitaminB2*recipe_ingredient.quantity %>
-          <% vitaminB3 += breakfast_ingredient.vitaminB3*recipe_ingredient.quantity %>
-          <% vitaminB5 += breakfast_ingredient.vitaminB5*recipe_ingredient.quantity %>
-          <% vitaminB6 += breakfast_ingredient.vitaminB6*recipe_ingredient.quantity %>
-          <% vitaminB12 += breakfast_ingredient.vitaminB12*recipe_ingredient.quantity %>
-          <% vitaminC += breakfast_ingredient.vitaminC*recipe_ingredient.quantity %>
-          <% vitaminD += breakfast_ingredient.vitaminD*recipe_ingredient.quantity %>
-          <% vitaminE += breakfast_ingredient.vitaminE*recipe_ingredient.quantity %>
+      <% user_breakfast.recipes.each do |breakfast_recipe| %>
+        <% breakfast_recipe.ingredients.each do |breakfast_ingredient| %>
+          <% breakfast_ingredient.recipe_ingredients.each do |recipe_ingredient|  %>
+            <% vitaminA += breakfast_ingredient.vitaminA*recipe_ingredient.quantity %>
+            <% vitaminB1 += breakfast_ingredient.vitaminB1*recipe_ingredient.quantity %>
+            <% vitaminB2 += breakfast_ingredient.vitaminB2*recipe_ingredient.quantity %>
+            <% vitaminB3 += breakfast_ingredient.vitaminB3*recipe_ingredient.quantity %>
+            <% vitaminB5 += breakfast_ingredient.vitaminB5*recipe_ingredient.quantity %>
+            <% vitaminB6 += breakfast_ingredient.vitaminB6*recipe_ingredient.quantity %>
+            <% vitaminB12 += breakfast_ingredient.vitaminB12*recipe_ingredient.quantity %>
+            <% vitaminC += breakfast_ingredient.vitaminC*recipe_ingredient.quantity %>
+            <% vitaminD += breakfast_ingredient.vitaminD*recipe_ingredient.quantity %>
+            <% vitaminE += breakfast_ingredient.vitaminE*recipe_ingredient.quantity %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
