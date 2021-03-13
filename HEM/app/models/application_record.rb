@@ -7,7 +7,7 @@ class ApplicationRecord < ActiveRecord::Base
     if search
       where(['name LIKE ?', "%#{search}%"])
     else
-      all
+      none
     end
   end
 
