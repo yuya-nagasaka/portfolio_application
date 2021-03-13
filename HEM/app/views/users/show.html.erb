@@ -10,7 +10,7 @@
       </div>
       <div>
         <p class = "pt-3"><b>紹介文</b></p></br>
-        <textarea readonly rows = "5" cols = "25"><%= @user.introduction%></textarea>
+        <textarea readonly style = "height:200px;width:200px"><%= @user.introduction%></textarea>
       </div>
       <% if @user == current_user %>
         <%= link_to "編集", edit_user_path, class: 'btn btn-secondary mt-2 mb-2',style:"width:205px" %>
@@ -39,7 +39,7 @@
     </div>
     <div class = "col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
       <h3 class = "mt-5 mb-5">
-        <span class = "border border-dark  pr-5 pl-5 pt-2 pb-2 rounded">投稿レシピ一覧<span>
+        <span class = "border border-dark  pr-5 pl-5 pt-2 pb-2 rounded">レシピ一覧<span>
       </h3>
       <table>
         <thead>
@@ -52,7 +52,7 @@
         <% @recipes.each do |recipe| %>
           <tr class = "border-bottom border-top border-dark">
             <% if recipe.user == current_user %>
-              <td class = "pt-2 pb-2 w-75"><%= link_to "#{recipe.name}",recipe_path(recipe),class:"text-dark" %></td>
+              <td class = "pt-2 pb-2 w-50"><%= link_to "#{recipe.name}",recipe_path(recipe),class:"text-dark" %></td>
               <td class = "pt-2 pb-2">　<%= link_to "編集", edit_recipe_path(recipe.id), class: "btn btn-secondary p-1" %></td>
               <td class = "pt-2 pb-2">　<%= link_to "削除", recipe_path(recipe.id), method: :delete, class: "btn btn-dark p-1" %></td>
             <% else %>
