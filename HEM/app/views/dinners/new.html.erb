@@ -4,7 +4,7 @@
       <h2 class = "mt-5 mb-5">食事記録(夕食分)</h2>
       <h4>メニュー検索</h4>
       <%= form_tag(new_dinner_path, :method=>"get") do %>
-        <%= text_field_tag :search,"",class:"rounded mt-3",style:"width:150px"  %>
+        <%= text_field_tag :search,"",class:"rounded mt-3",style:"width:150px"%>
         <%= submit_tag "Serch",class:"rounded btn btn-secondary mt-3",style:"width:150px" %>
       <% end %>
       <% @search_recipes.each do |recipe| %>
@@ -57,7 +57,11 @@
           <% @all_dinner_recipes.each do |dinner_recipe| %>
             <tr class = "border-top border-bottom">
               <td class = "pb-4 pr-4 pt-4"><%= dinner_recipe.recipe.name %></td>
-              <td class = "pb-4 pr-4 pt-4"><%= link_to "削除", dinner_recipe_path(dinner_recipe.id), method: :delete,class:"btn btn-dark" %></td>
+              <td class = "pb-4 pr-4 pt-4">
+                <%= link_to dinner_recipe_path(dinner_recipe.id), method: :delete do %>
+                  <i class="fas fa-trash text-dark"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
