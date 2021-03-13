@@ -4,8 +4,8 @@
       <h2 class = "mt-5 mb-5">食事記録(朝食分)</h2>
       <h4>メニュー検索</h4>
       <%= form_tag(new_breakfast_path, :method=>"get" )do %>
-        <%= text_field_tag :search %>
-        <%= submit_tag "Serch" %>
+        <%= text_field_tag :search,"",class:"rounded mt-3",style:"width:150px" %>
+        <br><%= submit_tag "Serch",class:"rounded btn btn-secondary mt-3",style:"width:150px" %>
       <% end %>
       <% @search_recipes.each do |recipe| %>
         <div class = "pt-2 pb-2"><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></div>
