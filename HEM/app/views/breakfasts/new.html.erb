@@ -40,6 +40,7 @@
     <% vitaminE = 0 %>
     
     <% user_breakfast = current_user.breakfast %>
+    <% unless user_breakfast.nil? %>
     <% user_breakfast.recipes.each do |breakfast_recipe| %>
       <% breakfast_recipe.ingredients.each do |breakfast_ingredient| %>
         <% breakfast_ingredient.recipe_ingredients.each do |recipe_ingredient|  %>
