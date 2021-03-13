@@ -50,9 +50,9 @@
             <td class = "pt-2 pb-2"><%= draft_ingredient.ingredient.name %></td>
             <%= form_with model:draft_ingredient, local:true do |f| %>
             <td class = "pt-2 pb-2"><%=f.text_field :quantity,style:"width:40px" %>　g</td>
-            <td><%= f.submit "確定", class: "btn btn-secondary" %></td>
+            <td><%= f.submit "確定", class: "btn btn-secondary",style:"width:60px" %></td>
             <% end %>
-            <td class = "pt-2 pb-2"><%= link_to "削除", draft_ingredient_path(draft_ingredient.id), method: :delete, class: "btn btn-dark" %></td>
+            <td class = "pt-2 pb-2"><%= link_to "削除", draft_ingredient_path(draft_ingredient.id), method: :delete, class: "btn btn-dark",style:"width:60px" %></td>
           </tr>
         <% end %>
         </tbody>
