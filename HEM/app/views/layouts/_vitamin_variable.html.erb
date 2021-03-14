@@ -86,12 +86,12 @@
     <% need_vitaminB2 = need_vitaminB2 - vitaminB2 %>
     <% if need_vitaminB2 > 0 %>
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンB2" %></td>
-      <td class="pb-4 pr-4 pt-4"><%= need_vitaminB1.round(1) %><%="mg"%></td>
+      <td class="pb-4 pr-4 pt-4"><%= need_vitaminB2.round(1) %><%="mg"%></td>
       <td class="pb-4 pr-4 pt-4">
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
-            <% recipe_vitaminB1 += ingredient.vitaminB1*recipe_ingredient.quantity %>
+            <% recipe_vitaminB2 += ingredient.vitaminB2*recipe_ingredient.quantity %>
           <% end %>
           <% end %>
           <% if need_vitaminB2 < recipe_vitaminB2 %>
@@ -134,7 +134,7 @@
     
     <tr class="border-top border-bottom  border-dark">
     <% need_vitaminB5 = need_vitaminB5 - vitaminB5 %>
-    <% if need_vitaminB1 > 0 %>
+    <% if need_vitaminB5 > 0 %>
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンB5" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminB5.round(1) %><%="mg"%></td>
       <td class="pb-4 pr-4 pt-4">
