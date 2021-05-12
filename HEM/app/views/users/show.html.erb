@@ -5,12 +5,13 @@
         <span class = "border border-dark pr-3 pl-3 pt-2 pb-2 rounded" >プロフィール<span>
       </h3>
       <div>
-        <%= attachment_image_tag @user, :image, size: '50x50', fallback: "user.png" %>　　
-        <%= @user.name %>
+        <%= form_with model:@user do |f|%>
+          <%= attachment_image_tag @user, :image, size: '50x50', fallback: "user.png" %>　
+          <%= f.text_field :name, readonly:true,size:12%>
+        <% end %>
       </div>
       <div>
-        <p class = "pt-3"><b>紹介文</b></p></br>
-        <textarea readonly style = "height:200px;width:200px"><%= @user.introduction%></textarea>
+        <textarea readonly style = "height:200px;width:200px;resize:none;"><%= @user.introduction%></textarea>
       </div>
       <% if @user == current_user %>
         <%= link_to edit_user_path, class: 'btn btn-secondary mt-2 mb-2',style:"width:205px" do %>
