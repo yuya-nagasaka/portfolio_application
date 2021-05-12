@@ -24,7 +24,7 @@
 
 <% num = 0 %>
 
-<h3 class = "mt-5 mb-5"><span class = "border border-dark pr-3 pl-3 pt-2 pb-2 rounded" >提案レシピ</span></h3>
+<h2 class = "mt-5 mb-5">提案レシピ</h2>
 <table>    
   <tbody>
     <tr>
@@ -38,21 +38,20 @@
       <td class = "pb-4 pr-4 pt-4"><%= "ビタミンA" %></td>
       <td class = "pb-4 pr-4 pt-4"><%= need_vitaminA.round %><%= "μg" %></td>
       <td class = "pb-4 pr-4 pt-4">
+      
+      <% num = 0 %>  
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminA += ingredient.vitaminA*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminA < recipe_vitaminA %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminB1 < recipe_vitaminB1 %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
@@ -63,21 +62,20 @@
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンB1" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminB1.round(1) %><%="mg"%></td>
       <td class="pb-4 pr-4 pt-4">
+      
+      <% num = 0 %>    
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminB1 += ingredient.vitaminB1*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminB1 < recipe_vitaminB1 %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminB1 < recipe_vitaminB1 %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
@@ -88,21 +86,20 @@
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンB2" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminB2.round(1) %><%="mg"%></td>
       <td class="pb-4 pr-4 pt-4">
+        
+      <% num = 0 %>
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminB2 += ingredient.vitaminB2*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminB2 < recipe_vitaminB2 %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminB2 < recipe_vitaminB2 %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
@@ -113,171 +110,164 @@
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンB3" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminB3.round(1) %><%="mg"%></td>
       <td class="pb-4 pr-4 pt-4">
+        
+      <% num = 0 %>
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminB3 += ingredient.vitaminB3*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminB3 < recipe_vitaminB3 %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminB3 < recipe_vitaminB3 %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
     
     <tr class="border-top border-bottom  border-dark">
     <% need_vitaminB5 = need_vitaminB5 - vitaminB5 %>
-    <% if need_vitaminB5 > 0 %>
+    <% if need_vitaminB1 > 0 %>
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンB5" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminB5.round(1) %><%="mg"%></td>
       <td class="pb-4 pr-4 pt-4">
+      
+      <% num = 0 %>
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminB5 += ingredient.vitaminB5*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminB5 < recipe_vitaminB5 %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminB5 < recipe_vitaminB5 %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
     
-    <tr class="border-top border-bottom  border-dark">
+    <tr class="border-top border-bottom">
     <% need_vitaminB6 = need_vitaminB6 - vitaminB6 %>
     <% if need_vitaminB6 > 0 %>
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンB6" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminB6.round(1) %><%="mg"%></td>
       <td class="pb-4 pr-4 pt-4">
+      
+      <% num = 0 %>
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminB6 += ingredient.vitaminB6*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminB6 < recipe_vitaminB6 %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminB6 < recipe_vitaminB6 %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
     
-    <tr class="border-top border-bottom  border-dark">
+    <tr class="border-top border-bottom">
     <% need_vitaminB12 = need_vitaminB12 - vitaminB12 %>
     <% if need_vitaminB12 > 0 %>
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンB12" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminB12.round(1) %><%="μg"%></td>
       <td class="pb-4 pr-4 pt-4">
+      
+      <% num = 0 %>
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminB12 += ingredient.vitaminB12*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminB12 < recipe_vitaminB12 %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminB12 < recipe_vitaminB12 %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
     
-    <tr class="border-top border-bottom  border-dark">
+    <tr class="border-top border-bottom">
     <% need_vitaminC = need_vitaminC - vitaminC %>
     <% if need_vitaminC > 0 %>
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンC" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminC.round(1) %><%="mg"%></td>
       <td class="pb-4 pr-4 pt-4">
+      
+      <% num = 0 %>
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminC += ingredient.vitaminC*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminC < recipe_vitaminC %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminC < recipe_vitaminC %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
     
-    <tr class="border-top border-bottom  border-dark">
+    <tr class="border-top border-bottom">
     <% need_vitaminD = need_vitaminD - vitaminD %>
     <% if need_vitaminD > 0 %>
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンD" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminD.round(1) %><%="μg"%></td>
       <td class="pb-4 pr-4 pt-4">
+      
+      <% num = 0 %>
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminD += ingredient.vitaminD*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminD < recipe_vitaminD %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminD < recipe_vitaminD %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
     
-    <tr class="border-top border-bottom border-dark">
+    <tr class="border-top border-bottom">
     <% need_vitaminE = need_vitaminE - vitaminE %>
     <% if need_vitaminE > 0 %>
       <td class="pb-4 pr-4 pt-4"><%= "ビタミンE" %></td>
       <td class="pb-4 pr-4 pt-4"><%= need_vitaminE.round(1) %><%="mg"%></td>
       <td class="pb-4 pr-4 pt-4">
+      
+      <% num = 0 %>
       <% @all_recipes.each do |recipe| %>
         <% recipe.ingredients.each do |ingredient| %>
           <% ingredient.recipe_ingredients.each do |recipe_ingredient| %>
             <% recipe_vitaminE += ingredient.vitaminE*recipe_ingredient.quantity %>
           <% end %>
-          <% end %>
-          <% if need_vitaminE < recipe_vitaminE %>
-            <% if num == 3 %>
-              <% num = 0 %>
-              <% break %>
-            <% end %>
-            <%= num += 1 %>.
-            <%= recipe.name %>
-          <% end %>
         <% end %>
+        <% if need_vitaminE < recipe_vitaminE %>
+          <%= num += 1 %>.
+          <%= recipe.name %>
+        <% end %>
+        <% break if num ==3%>
+      <% end %>
       </td>
     <% end %>
     </tr>
