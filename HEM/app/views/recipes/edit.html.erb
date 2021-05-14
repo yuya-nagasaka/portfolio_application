@@ -21,22 +21,27 @@
     </div>
     <div class = "col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
       <h3 class = "mb-5 mt-5"><span class ="border border-dark rounded pt-2 pb-2 pr-3 pl-3">使用食材</span></h3>
-      
-      <% recipe_ingredients = @recipe.recipe_ingredients %>
+      <table>
+        <thead>
+          <tr>
+            <td>食材</td>
+            <td>分量</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+        <% recipe_ingredients = @recipe.recipe_ingredients %>
         <% recipe_ingredients.each do |recipe_ingredient| %>
           <%= form_with model:recipe_ingredient, url:recipe_ingredient_path(recipe_ingredient), local:true do |f| %>
-          <table>
-            <tbody>
-              <tr class = "border-top border-bottom  border-dark">
-                <td class = "pt-2 pb-2"><%= recipe_ingredient.ingredient.name %></td>
-                <td class = "pt-2 pb-2"><%=f.text_field :quantity,:size => "5"  %>　g　</td>
-                <td class = "pt-2 pb-2"><%= f.submit "確定", class: "btn btn-secondary",style:"width:100px" %></td>
-                <td class = "pt-2 pb-2 pl-2"><%= link_to "削除", recipe_ingredient_path(recipe_ingredient.id),method: :delete,class: "btn btn-dark",style:"width:100px"%></td>
-              </tr>
-            </tbody>
-          </table>
+            <tr class = "border-top border-bottom  border-dark">
+              <td class = "pt-2 pb-2"><%= recipe_ingredient.ingredient.name %></td>
+              <td class = "pt-2 pb-2"><%=f.text_field :quantity,:size => "5"  %>　g　</td>
+              <td class = "pt-2 pb-2"><%= f.submit "確定", class: "btn btn-secondary",style:"width:100px" %></td>
+              <td class = "pt-2 pb-2 pl-2"><%= link_to "削除", recipe_ingredient_path(recipe_ingredient.id),method: :delete,class: "btn btn-dark",style:"width:100px"%></td>
+            </tr>
           <% end %>
         <% end %>
-    </div>
+      </tbody>
+    </table>
   </div>
 </div>
