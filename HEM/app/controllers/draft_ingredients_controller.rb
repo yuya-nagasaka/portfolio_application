@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class DraftIngredientsController < ApplicationController
+  
   def create
     draft_ingredient = DraftIngredient.new
     draft_ingredient.ingredient_id = params[:ingredient_id]
