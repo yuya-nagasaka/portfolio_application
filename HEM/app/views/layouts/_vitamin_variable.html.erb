@@ -46,7 +46,7 @@
             <% recipe_vitaminA += ingredient.vitaminA*recipe_ingredient.quantity %>
           <% end %>
         <% end %>
-        <% if need_vitaminB1 < recipe_vitaminB1 %>
+        <% if need_vitaminA < recipe_vitaminA %>
           <%= num += 1 %>.
           <%= recipe.name %>
         <% end %>
