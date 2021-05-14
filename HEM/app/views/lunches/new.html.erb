@@ -20,7 +20,7 @@
         </thead>
         <tbody>
           <% @all_lunch_recipes.each do |lunch_recipe| %>
-            <tr class = "border-top border-bottom">
+            <tr class = "border-top border-bottom border-dark">
               <td class = "pb-4 pr-4 pt-4"><%= lunch_recipe.recipe.name %></td>
               <td class = "pb-4 pr-4 pt-4"><%= link_to "削除", lunch_recipe_path(lunch_recipe.id), method: :delete,class:"btn btn-dark" %></td>
             </tr>
