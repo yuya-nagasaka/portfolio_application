@@ -11,19 +11,6 @@
   </div>
   <div class = "row">
     <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-      <h3 class = "mt-5 mb-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">食材検索</h3>
-      <%= form_tag(new_recipe_path, :method=>"get") do %>
-        <%= text_field_tag :search,"",class:"rounded",style:"width:150px" %>
-        <br><%= button_tag :type => "Serch",class:"rounded mt-3 btn btn-secondary",style:"width:150px" do %>
-        <i class="fas fa-search"></i>　Search
-        <% end %>
-      <% end %>
-    
-      <% @ingredient.each do |ingredient| %>
-        <%= ingredient.name %>
-        <%= button_to "追加", {controller: 'draft_ingredients', action: 'create' }, {method: :post, params: {ingredient_id: ingredient.id}} %>
-      <% end %>
-      <%= paginate @ingredient %>
       <%= form_with model:@recipe, local:true do |f| %>
         <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">レシピ名</span></h3>
         <%= f.text_field :name,class:"rounded",style:"width:150px" %>
@@ -33,8 +20,21 @@
           <i class="far fa-plus-square">　投稿する</i>
         <% end %>
       <% end %>
+      <h3 class = "mt-5 mb-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">食材検索</h3>
+      <%= form_tag(new_recipe_path, :method=>"get") do %>
+        <%= text_field_tag :search,"",class:"rounded",style:"width:150px" %>
+        <br><%= button_tag :type => "Serch",class:"rounded mt-3 btn btn-secondary",style:"width:150px" do %>
+        <i class="fas fa-search"></i>　Search
+        <% end %>
+      <% end %>
+      <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">検索結果</span></h3>
+      <% @ingredient.each do |ingredient| %>
+          <%= ingredient.name %>
+          <%= button_to "追加", {controller: 'draft_ingredients', action: 'create' }, {method: :post, params: {ingredient_id: ingredient.id}} %>
+      <% end %>
+      <div class = "pt-2"><%= paginate @ingredient %></div>
     </div>
-    <div class = "col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-7 ">
+    <div class = "col-xs-9 col-sm-9 col-md-5 col-lg-1 col-xl-5 ">
       <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">使用食材</span></h3>
       <table>
         <thead>
@@ -60,5 +60,14 @@
         </tbody>
       </table>
     </div>
+      <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-4 col-xl-4 border1">
+        <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">★使用方法</span></h3>
+        <h4>1⃣レシピ名を入力</h4>
+        <h4>2⃣調理手順を入力</h4>
+        <h4>3⃣食材を検索→追加</h4>
+        <h4>4⃣食材の数量を入力→確定</h4>
+        <h4>5⃣投稿ボタン</h4></br>
+        <h4>登録したレシピを食事記録に登録しよう!!</h4>
+      </div>
   </div>
 </div>
