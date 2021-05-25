@@ -1,81 +1,81 @@
 <div class =  "container-fluid">
   <div class = "row">
-    <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-      <h3 class = "mt-5 mb-5"><span class = "border border-dark pr-3 pl-3 pt-2 pb-2 rounded" >メニュー検索</span></h3>
-      <%= form_tag(new_dinner_path, :method=>"get") do %>
-        <%= text_field_tag :search,"",class:"rounded mt-3",style:"width:200px"%>
-        <br><%= submit_tag "Serch",class:"rounded btn btn-secondary mt-3",style:"width:200px" %>
-      <% end %>
-      <% @search_recipes.each do |recipe| %>
-        <div class = "pt-2 pb-2"><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></div>
-        <%= button_to "追加", {controller: 'dinner_recipes', action: 'create' }, {method: :post, params: {recipe_id: recipe.id}} %></br>
-      <% end %>
-      <h3 class = "mb-5 mt-5"><span class = "border border-dark pr-4 pl-4 pt-2 pb-2 rounded" >使用レシピ</span></h3>
-      <table>
-        <thead>
-          <tr>
-            <td class = "pb-4 pr-4">レシピ名</td>
-            <td class = "pb-4 pr-4">削除</td>
-          </tr>
-        </thead>
-        <tbody>
-          <% @all_dinner_recipes.each do |dinner_recipe| %>
-            <tr class = "border-top border-bottom border-dark">
-              <td class = "pb-4 pr-4 pt-4"><%= dinner_recipe.recipe.name %></td>
-              <td class = "pb-4 pr-4 pt-4">
-                <%= link_to dinner_recipe_path(dinner_recipe.id), method: :delete do %>
-                  <i class="fas fa-trash text-dark"></i>
-                <% end %>
-              </td>
-            </tr>
+    <div class = "col-md-8 col-lg-8 col-xl-9">
+      <div class = "row">
+        <div class = "col-md-12 col-lg-12 col-xl-3">
+          <h3 class = "mt-5 mb-5"><span class = "border border-dark pr-3 pl-3 pt-2 pb-2 rounded" >メニュー検索</span></h3>
+          <%= form_tag(new_dinner_path, :method=>"get") do %>
+            <%= text_field_tag :search,"",class:"rounded mt-3",style:"width:200px"%>
+            <br><%= submit_tag "Serch",class:"rounded btn btn-secondary mt-3",style:"width:200px" %>
           <% end %>
-        </tbody>
-      </table>
-    </div>
-    <% vitaminA = 0 %>
-    <% vitaminB1 = 0 %>
-    <% vitaminB2 = 0 %>
-    <% vitaminB3 = 0 %>
-    <% vitaminB5 = 0 %>
-    <% vitaminB6 = 0 %>
-    <% vitaminB12 = 0 %>
-    <% vitaminC = 0 %>
-    <% vitaminD = 0 %>
-    <% vitaminE = 0 %>
-    
-    <% user_dinner = current_user.dinner%>
-    <% unless user_dinner.nil? %>
-      <% user_dinner.recipes.each do |dinner_recipe| %>
-        <% dinner_recipe.ingredients.each do |dinner_ingredient| %>
-          <% dinner_ingredient.recipe_ingredients.each do |recipe_ingredient|  %>
-            <% vitaminA += dinner_ingredient.vitaminA*recipe_ingredient.quantity %>
-            <% vitaminB1 += dinner_ingredient.vitaminB1*recipe_ingredient.quantity %>
-            <% vitaminB2 += dinner_ingredient.vitaminB2*recipe_ingredient.quantity %>
-            <% vitaminB3 += dinner_ingredient.vitaminB3*recipe_ingredient.quantity %>
-            <% vitaminB5 += dinner_ingredient.vitaminB5*recipe_ingredient.quantity %>
-            <% vitaminB6 += dinner_ingredient.vitaminB6*recipe_ingredient.quantity %>
-            <% vitaminB12 += dinner_ingredient.vitaminB12*recipe_ingredient.quantity %>
-            <% vitaminC += dinner_ingredient.vitaminC*recipe_ingredient.quantity %>
-            <% vitaminD += dinner_ingredient.vitaminD*recipe_ingredient.quantity %>
-            <% vitaminE += dinner_ingredient.vitaminE*recipe_ingredient.quantity %>
+          <% @search_recipes.each do |recipe| %>
+            <div class = "pt-2 pb-2"><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></div>
+            <%= button_to "追加", {controller: 'dinner_recipes', action: 'create' }, {method: :post, params: {recipe_id: recipe.id}} %></br>
+          <% end %>
+          <h3 class = "mb-5 mt-5"><span class = "border border-dark pr-4 pl-4 pt-2 pb-2 rounded" >使用レシピ</span></h3>
+          <table>
+            <thead>
+              <tr>
+                <td class = "pb-4 pr-4">レシピ名</td>
+                <td class = "pb-4 pr-4">削除</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% @all_dinner_recipes.each do |dinner_recipe| %>
+                <tr class = "border-top border-bottom border-dark">
+                  <td class = "pb-4 pr-4 pt-4"><%= dinner_recipe.recipe.name %></td>
+                  <td class = "pb-4 pr-4 pt-4">
+                    <%= link_to dinner_recipe_path(dinner_recipe.id), method: :delete do %>
+                      <i class="fas fa-trash text-dark"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <% vitaminA = 0 %>
+        <% vitaminB1 = 0 %>
+        <% vitaminB2 = 0 %>
+        <% vitaminB3 = 0 %>
+        <% vitaminB5 = 0 %>
+        <% vitaminB6 = 0 %>
+        <% vitaminB12 = 0 %>
+        <% vitaminC = 0 %>
+        <% vitaminD = 0 %>
+        <% vitaminE = 0 %>
+        
+        <% user_dinner = current_user.dinner%>
+        <% unless user_dinner.nil? %>
+          <% user_dinner.recipes.each do |dinner_recipe| %>
+            <% dinner_recipe.ingredients.each do |dinner_ingredient| %>
+              <% dinner_ingredient.recipe_ingredients.each do |recipe_ingredient|  %>
+                <% vitaminA += dinner_ingredient.vitaminA*recipe_ingredient.quantity %>
+                <% vitaminB1 += dinner_ingredient.vitaminB1*recipe_ingredient.quantity %>
+                <% vitaminB2 += dinner_ingredient.vitaminB2*recipe_ingredient.quantity %>
+                <% vitaminB3 += dinner_ingredient.vitaminB3*recipe_ingredient.quantity %>
+                <% vitaminB5 += dinner_ingredient.vitaminB5*recipe_ingredient.quantity %>
+                <% vitaminB6 += dinner_ingredient.vitaminB6*recipe_ingredient.quantity %>
+                <% vitaminB12 += dinner_ingredient.vitaminB12*recipe_ingredient.quantity %>
+                <% vitaminC += dinner_ingredient.vitaminC*recipe_ingredient.quantity %>
+                <% vitaminD += dinner_ingredient.vitaminD*recipe_ingredient.quantity %>
+                <% vitaminE += dinner_ingredient.vitaminE*recipe_ingredient.quantity %>
+              <% end %>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    <% end %>
-    
-    
-    <div class = "col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-5">
-    <%= render partial: "layouts/vitamin_variable", locals: 
-    { vitaminA: vitaminA,vitaminB1: vitaminB1 ,vitaminB2: vitaminB2,vitaminB3: vitaminB3,vitaminB5: vitaminB5,
-    vitaminB6: vitaminB6,vitaminB12: vitaminB12,vitaminC: vitaminC,vitaminD: vitaminD,vitaminE: vitaminE}%>
-    </div>
-    
-    <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-4 col-xl-4 border1">
-        <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">★使用方法</span></h3>
-        <h4>1⃣食事に使用したレシピを検索➡追加</h4>
-        <h4>2⃣不足栄養素を補うレシピが表示される</h4>
-        <h4>3⃣レシピ名をクリックして詳細チェック</h4>
+        <div class = "col-md-12 col-lg-12 col-xl-6">
+          <%= render partial: "layouts/vitamin_variable", locals: 
+          { vitaminA: vitaminA,vitaminB1: vitaminB1 ,vitaminB2: vitaminB2,vitaminB3: vitaminB3,vitaminB5: vitaminB5,
+          vitaminB6: vitaminB6,vitaminB12: vitaminB12,vitaminC: vitaminC,vitaminD: vitaminD,vitaminE: vitaminE}%>
+        </div>
       </div>
-      
+    </div>
+    <div class = "col-md-4 col-lg-4 col-xl-3 border1">
+      <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">★使用方法</span></h3>
+      <h4>1⃣食事に使用したレシピを検索➡追加</h4>
+      <h4>2⃣不足栄養素を補うレシピが表示される</h4>
+      <h4>3⃣レシピ名をクリックして詳細チェック</h4>
+    </div>
   </div>
 </div>
