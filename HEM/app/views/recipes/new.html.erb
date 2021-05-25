@@ -10,64 +10,68 @@
     <% end %>
   </div>
   <div class = "row">
-    <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-      <%= form_with model:@recipe, local:true do |f| %>
-        <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">レシピ名</span></h3>
-        <%= f.text_field :name,class:"rounded",style:"width:150px" %>
-        <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">調理手順</span></h3>
-        <%= f.text_area :method, class: "rounded",style:"width:150px;height:300px" %></br>
-        <%= f.button :type => "submit", class: "btn btn-secondary mt-3",style:"width:150px" do %>
-          <i class="far fa-plus-square">　投稿する</i>
-        <% end %>
-      <% end %>
-      <h3 class = "mt-5 mb-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">食材検索</h3>
-      <%= form_tag(new_recipe_path, :method=>"get") do %>
-        <%= text_field_tag :search,"",class:"rounded",style:"width:150px" %>
-        <br><%= button_tag :type => "Serch",class:"rounded mt-3 btn btn-secondary",style:"width:150px" do %>
-        <i class="fas fa-search"></i>　Search
-        <% end %>
-      <% end %>
-      <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">検索結果</span></h3>
-      <% @ingredient.each do |ingredient| %>
-          <%= ingredient.name %>
-          <%= button_to "追加", {controller: 'draft_ingredients', action: 'create' }, {method: :post, params: {ingredient_id: ingredient.id}} %>
-      <% end %>
-      <div class = "pt-2"><%= paginate @ingredient %></div>
-    </div>
-    <div class = "col-xs-9 col-sm-9 col-md-5 col-lg-1 col-xl-5 ">
-      <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">使用食材</span></h3>
-      <table>
-        <thead>
-          <tr>
-            <td>食材</td>
-            <td>分量</td>
-            <td></td>
-            <td></td>
-          </tr>
-        </thead>
-        <tbody>
-        <% draft_ingredients = current_user.draft_ingredients %>
-        <% draft_ingredients.each do |draft_ingredient| %>
-          <tr class = "border-top border-bottom  border-dark">
-            <td class = "pt-2 pb-2"><%= draft_ingredient.ingredient.name %></td>
-            <%= form_with model:draft_ingredient, local:true do |f| %>
-            <td class = "pt-2 pb-2"><%=f.text_field :quantity,style:"width:40px" %>　g</td>
-            <td><%= f.submit "確定", class: "btn btn-secondary",style:"width:60px" %></td>
+    <div class = "col-md-8 col-lg-8 col-xl-9">
+      <div class = "row">
+        <div class = "col-md-12 col-lg-12 col-xl-3">
+          <%= form_with model:@recipe, local:true do |f| %>
+            <h4 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">レシピ名</span></h4>
+            <%= f.text_field :name,class:"rounded",style:"width:125px" %>
+            <h4 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">調理手順</span></h4>
+            <%= f.text_area :method, class: "rounded",style:"width:125px;height:300px" %></br>
+            <%= f.button :type => "submit", class: "btn btn-secondary mt-3",style:"width:125px" do %>
+              <i class="far fa-plus-square">　投稿する</i>
             <% end %>
-            <td class = "pt-2 pb-2"><%= link_to "削除", draft_ingredient_path(draft_ingredient.id), method: :delete, class: "btn btn-dark",style:"width:60px" %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-      <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-4 col-xl-4 border1">
-        <h3 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">★使用方法</span></h3>
-        <h4>1⃣レシピ名を入力</h4>
-        <h4>2⃣調理手順を入力</h4>
-        <h4>3⃣食材を検索→追加</h4>
-        <h4>4⃣食材の数量を入力→確定</h4>
-        <h4>5⃣投稿ボタン</h4></br>
-        <h4>登録したレシピを食事記録に登録しよう!!</h4>
+          <% end %>
+          <h4 class = "mt-5 mb-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">食材検索</h4>
+          <%= form_tag(new_recipe_path, :method=>"get") do %>
+            <%= text_field_tag :search,"",class:"rounded",style:"width:125px" %>
+            <br><%= button_tag :type => "Serch",class:"rounded mt-3 btn btn-secondary",style:"width:125px" do %>
+              <i class="fas fa-search"></i>　Search
+            <% end %>
+          <% end %>
+          <h4 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">検索結果</span></h4>
+          <% @ingredient.each do |ingredient| %>
+            <%= ingredient.name %>
+            <%= button_to "追加", {controller: 'draft_ingredients', action: 'create' }, {method: :post, params: {ingredient_id: ingredient.id}} %>
+          <% end %>
+          <div class = "pt-2"><%= paginate @ingredient %></div>
+        </div>
+        <div class = "col-md-12 col-lg-12 col-xl-6">
+          <h4 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">使用食材</span></h4>
+          <table>
+            <thead>
+              <tr>
+                <td>食材</td>
+                <td>分量</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+            <% draft_ingredients = current_user.draft_ingredients %>
+            <% draft_ingredients.each do |draft_ingredient| %>
+              <tr class = "border-top border-bottom  border-dark">
+                <td class = "pt-2 pb-2"><%= draft_ingredient.ingredient.name %></td>
+                <%= form_with model:draft_ingredient, local:true do |f| %>
+                <td class = "pt-2 pb-2"><%=f.text_field :quantity,style:"width:40px" %>　g</td>
+                <td><%= f.submit "確定", class: "btn btn-secondary",style:"width:60px" %></td>
+                <% end %>
+                <td class = "pt-2 pb-2"><%= link_to "削除", draft_ingredient_path(draft_ingredient.id), method: :delete, class: "btn btn-dark",style:"width:60px" %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div>
+    <div class = "col-md-4 col-lg-4 col-xl-3 border1">
+      <h4 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">★使用方法</span></h4>
+      <h4>1⃣レシピ名を入力</h4>
+      <h4>2⃣調理手順を入力</h4>
+      <h4>3⃣食材を検索→追加</h4>
+      <h4>4⃣食材の数量を入力→確定</h4>
+      <h4>5⃣投稿ボタン</h4></br>
+      <h4>登録したレシピを食事記録に登録しよう!!</h4>
+    </div>
   </div>
 </div>
