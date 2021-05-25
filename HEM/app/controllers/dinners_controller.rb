@@ -6,5 +6,6 @@ class DinnersController < ApplicationController
     @all_dinner_recipes = DinnerRecipe.all
     @all_recipes = Recipe.all
     @search_recipes = Recipe.search(params[:search])
+    @search_recipes = @search_recipes.page(params[:page]).per(5)
   end
 end
