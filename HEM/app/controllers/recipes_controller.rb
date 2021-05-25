@@ -74,5 +74,6 @@ class RecipesController < ApplicationController
 
   def set_search_ingredient
     @ingredient = Ingredient.search(params[:search])
+    @ingredient = @ingredient.page(params[:page]).per(4)
   end
 end
