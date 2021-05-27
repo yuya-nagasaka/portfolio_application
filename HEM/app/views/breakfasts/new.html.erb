@@ -22,6 +22,7 @@
               </tr>
             </thead>
             <tbody>
+            <% breakfast = current_user.breakfast%>
             <% @all_breakfast_recipes.each do |breakfast_recipe| %>
               <tr class = "border-top border-bottom border-dark">
                 <td class = "pb-4 pr-4 pt-4"><%= breakfast_recipe.recipe.name %></td>

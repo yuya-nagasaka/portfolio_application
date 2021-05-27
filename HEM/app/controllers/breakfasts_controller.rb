@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class BreakfastsController < ApplicationController
   def new
     @breakfast = Breakfast.new
