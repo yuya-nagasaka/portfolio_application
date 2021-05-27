@@ -22,11 +22,17 @@
               </tr>
             </thead>
             <tbody>
-              <% @all_lunch_recipes.each do |lunch_recipe| %>
-                <tr class = "border-top border-bottom border-dark">
-                  <td class = "pb-4 pr-4 pt-4"><%= lunch_recipe.recipe.name %></td>
-                  <td class = "pb-4 pr-4 pt-4"><%= link_to "削除", lunch_recipe_path(lunch_recipe.id), method: :delete,class:"btn btn-dark" %></td>
-                </tr>
+              <% lunch = current_user.lunch%>
+              <% unless lunch.nil? %>
+                <% unless lunch.lunch_recipes.nil? %>
+                  <% lunch_recipes = lunch.lunch_recipes %>
+                  <% lunch_recipes.each do |lunch_recipe| %>
+                    <tr class = "border-top border-bottom border-dark">
+                      <td class = "pb-4 pr-4 pt-4"><%= lunch_recipe.recipe.name %></td>
+                      <td class = "pb-4 pr-4 pt-4"><%= link_to "削除", lunch_recipe_path(lunch_recipe.id), method: :delete,class:"btn btn-dark" %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
               <% end %>
             </tbody>
           </table>
