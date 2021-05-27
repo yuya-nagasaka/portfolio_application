@@ -26,7 +26,7 @@
             <% unless dinner.nil? %>
               <% unless dinner.dinner_recipes.nil? %>
                 <% dinner_recipes = dinner.dinner_recipes %>
-                <% dinner_recipes.each do |dsinner_recipe| %>
+                <% dinner_recipes.each do |dinner_recipe| %>
                   <tr class = "border-top border-bottom border-dark">
                     <td class = "pb-4 pr-4 pt-4"><%= dinner_recipe.recipe.name %></td>
                     <td class = "pb-4 pr-4 pt-4"><%= link_to "削除", dinner_recipe_path(dinner_recipe.id), method: :delete,class:"btn btn-dark" %></td>
