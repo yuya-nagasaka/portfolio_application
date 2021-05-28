@@ -35,7 +35,7 @@
           <%= form_with model:recipe_ingredient, url:recipe_ingredient_path(recipe_ingredient), local:true do |f| %>
             <tr class = "border-top border-bottom  border-dark">
               <td class = "pt-2 pb-2"><%= recipe_ingredient.ingredient.name %></td>
-              <td class = "pt-2 pb-2"><%=f.text_field :quantity,:size => "5"  %>　g　</td>
+              <td class = "pt-2 pb-2"><%=f.text_field :quantity,:size => "1"  %>　g　</td>
               <td class = "pt-2 pb-2"><%= f.submit "確定", class: "btn btn-secondary",style:"width:100px" %></td>
               <td class = "pt-2 pb-2 pl-2"><%= link_to "削除", recipe_ingredient_path(recipe_ingredient.id),method: :delete,class: "btn btn-dark",style:"width:100px"%></td>
             </tr>
