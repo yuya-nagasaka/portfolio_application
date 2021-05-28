@@ -10,7 +10,7 @@
             <%= form_with model:@user do |f|%>
               <div class = "mt-2 mb-2 ml-2">
                 <%= attachment_image_tag @user, :image, size: '60x60', fallback: "user.png" %>
-                <%= f.text_field :name, readonly:true,size:17%>
+                <%= f.text_field :name, readonly:true,size:15%>
               </div>　
             <% end %>
           </div>
