@@ -9,28 +9,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
 
-  <body class="background">
+  <body class="background ">
     <% if user_signed_in? %>
-      <ul class="list-inline w-100 p-3 border-bottom border-dark">
+      <ul class="list-inline w-100 p-3 bg-secondary">
         <li class="list-inline-item">
-          <%= link_to user_path(current_user),class:"text-dark" do %>
-            <%= image_tag 'fabicon.png',class:"pb-1",style:"width:20px" %>
-          <% end %>
+          <b><%= link_to "トップ",user_path(current_user),class:"text-white"%></b>
         </li>
-        <li class="list-inline-item"><b><%= link_to "レシピ投稿",new_recipe_path,class:"text-dark" %></b></li>
-        <li class="list-inline-item"><b><%= link_to "レシピ一覧",recipes_path,class:"text-dark" %></b></li>
-        <li class="list-inline-item"><b><%= link_to "ログアウト", destroy_user_session_path, method: :delete,class:"text-dark" %></b></li>
+        <li class="list-inline-item"><b><%= link_to "レシピ投稿",new_recipe_path,class:"text-white" %></b></li>
+        <li class="list-inline-item"><b><%= link_to "レシピ一覧",recipes_path,class:"text-white" %></b></li>
+        <li class="list-inline-item"><b><%= link_to "ログアウト", destroy_user_session_path, method: :delete,class:"text-white" %></b></li>
       </ul>
     <% else %>
-      <ul class="list-inline w-100 p-3 border-bottom border-dark">
+      <ul class="list-inline w-100 p-3  bg-secondary">
         <li class="list-inline-item ">
-          <%= link_to root_path,class:"text-dark" do %>
-            <%= image_tag 'fabicon.png',class:"pb-1",style:"width:20px" %>
-            <b>トップ</b>
-          <% end %>
+          <b><%= link_to "トップ",root_path,class:"text-white"%></b>
         </il>
-        <li class="list-inline-item"><i class="fas fa-pencil-alt ml-2"></i><b><%= link_to "会員登録", new_user_registration_path,class:"text-dark" %></b></li>
-        <li class="list-inline-item"><i class="fas fa-sign-in-alt ml-2"></i><b><%= link_to "ログイン", new_user_session_path,class:"text-dark" %></b></li>
+        <li class="list-inline-item"></i><b><%= link_to "会員登録", new_user_registration_path,class:"text-white" %></b></li>
+        <li class="list-inline-item"><b><%= link_to "ログイン", new_user_session_path,class:"text-white" %></b></li>
       </ul>
     <% end %>
     <%= yield %>

@@ -48,7 +48,7 @@
         <% end %>
         <% if need_vitaminA < recipe_vitaminA %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+          <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminA = 0 %>
@@ -73,7 +73,7 @@
         <% end %>
         <% if need_vitaminB1 < recipe_vitaminB1 %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+          <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminB1 = 0 %>
@@ -98,7 +98,7 @@
         <% end %>
         <% if need_vitaminB2 < recipe_vitaminB2 %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+          <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminB2 = 0 %>
@@ -123,7 +123,7 @@
         <% end %>
         <% if need_vitaminB3 < recipe_vitaminB3 %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+         <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminB3 = 0 %>
@@ -148,7 +148,7 @@
         <% end %>
         <% if need_vitaminB5 < recipe_vitaminB5 %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+          <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminB5 = 0 %>
@@ -173,7 +173,7 @@
         <% end %>
         <% if need_vitaminB6 < recipe_vitaminB6 %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+          <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminB6 = 0 %>
@@ -198,7 +198,7 @@
         <% end %>
         <% if need_vitaminB12 < recipe_vitaminB12 %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+          <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminB12 = 0 %>
@@ -223,7 +223,7 @@
         <% end %>
         <% if need_vitaminC < recipe_vitaminC %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+          <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminC = 0 %>
@@ -248,7 +248,7 @@
         <% end %>
         <% if need_vitaminD < recipe_vitaminD %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+          <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminD = 0 %>
@@ -273,7 +273,7 @@
         <% end %>
         <% if need_vitaminE < recipe_vitaminE %>
           <%= num += 1 %>.
-          <%= recipe.name %>
+          <b><%= link_to "#{recipe.name}", recipe_path(recipe.id),class:"text-dark" %></b>
         <% end %>
         <% break if num ==3%>
         <% recipe_vitaminE = 0 %>
