@@ -21,10 +21,25 @@
             <% end %>
           <% end %>
           <h4 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">検索結果</span></h4>
+          <table>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
           <% @ingredient.each do |ingredient| %>
-            <%= ingredient.name %>
-            <%= button_to "追加", {controller: 'draft_ingredients', action: 'create' }, {method: :post, params: {ingredient_id: ingredient.id}} %>
-          <% end %>
+            <tr>
+              <td>
+                <%= ingredient.name %>
+              </td>
+              <td>
+                <div class = "a">
+                  <%= button_to "追加", {controller: 'draft_ingredients', action: 'create' }, {method: :post, params: {ingredient_id: ingredient.id}} %>
+                </div>
+                <div></div>
+              </td>
+            </tr>
+            <% end %>
+          </table>
           <div class = "pt-2"><%= paginate @ingredient %></div>
           <%= form_with model:@recipe, local:true do |f| %>
             <h4 class = "mb-5 mt-5"><span class = "border border-dark rounded pt-2 pb-2 pr-3 pl-3">レシピ名</span></h4>
@@ -71,7 +86,7 @@
       <h4>3.レシピ名を入力</h4>
       <h4>4.調理手順を入力</h4>
       <h4>5.投稿ボタン</h4></br>
-      <h4>次はレシピを食事記録に登録!</h4>
+      <h4>レシピを食事記録に登録!</h4>
     </div>
   </div>
 </div>
