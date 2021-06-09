@@ -1,5 +1,5 @@
 # HEM
-ポートフォリオです。
+Ruby on Railsで制作したPFです。
 
 ## サイト概要
 食事内容やレシピを投稿するアプリケーションです。
@@ -25,9 +25,7 @@
 - ワイヤーフレーム<https://app.diagrams.net/#G12vDrV7W5phHYxy_dJjcLvzdPs-U9Qabo>
 - テーブル定義書<https://docs.google.com/spreadsheets/d/17v6uv4Hu_Ma3TCJCRfsCdL65B7ltLPwrEUh1G9CEQGw/edit#gid=972686453>
 - 詳細設計書<https://docs.google.com/spreadsheets/d/1jq5_kNbBMRinJgVyu5ATwoy5xJR3NTyLowgbf6Uoxbs/edit#gid=0>
-## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0>
-
+- 
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
